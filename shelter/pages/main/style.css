@@ -33,6 +33,7 @@ html,
 body {
     height: 100%;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .app__shelter {
@@ -287,6 +288,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
 }
 
 .our_friends__content__btn button {
