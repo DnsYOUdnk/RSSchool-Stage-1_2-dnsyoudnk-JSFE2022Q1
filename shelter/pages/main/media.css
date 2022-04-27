@@ -46,6 +46,36 @@
     .our__friends__petscards__item:not(:last-child) {
         margin-right: 0px;
     }
+
+    .our__friends__pop-up__wrapper {
+        max-width: 630px;
+        max-height: 350px;
+        gap: 11px;
+    }
+
+    .our__friends__pop-up__image img {
+        width: 350px;
+        height: 350px;
+    }
+
+    .our__friends__pop-up__description {
+        margin-top: 10px;
+        margin-right: 9px;
+    }
+    
+    .our__friends__pop-up__breed {
+        padding: 10px 0 20px;
+    }
+
+    .our__friends__pop-up__about {
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        padding-bottom: 20px;  
+    }
+    
+    .our__friends__pop-up__characteristic__item:not(:last-child) {
+        margin-bottom: 5px;
+    }
 }
 
 @media screen and (max-width: 1130px) {
@@ -157,6 +187,7 @@
 
     .header__nav__items {
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         position: fixed;
         right: 0px;
@@ -165,7 +196,6 @@
         width: 320px;
         height:  100vh;
         background: #292929;
-        padding-top: 248px;
         transform: translateX(100%);
         visibility: hidden;
         overflow-x: hidden;
@@ -177,6 +207,12 @@
         visibility: visible;
         transform: translateX(0);
         animation: slideOpen 1s ease-out;
+    }
+
+    .header__nav__items.openMenu .header__logo {
+        position: absolute;
+        top: 30px;
+        left: 10px;
     }
 
     @keyframes slideOpen {
@@ -222,10 +258,14 @@
         max-width: 270px;
         left: -310px;
     }
-
-    .our__friends__petscards__item:nth-child(odd) {
+    
+    .our__friends__petscards__item {
         display: none;
-    } 
+    }
+    
+    .our__friends__petscards__item:nth-child(3n+1) {
+        display: flex;
+    }
 
     @keyframes leftMove {
         0% {
@@ -253,6 +293,37 @@
         100% {
             left: -620px;
         }
+    }
+
+    .our__friends__pop-up__wrapper {
+        max-width: 240px;
+        max-height: 430px;
+        gap: 0;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .our__friends__pop-up__image {
+        display: none;
+    }
+
+    .our__friends__pop-up__description {
+        margin-top: 0px;
+        margin-right: 0px;
+    }
+
+    .our__friends__pop-up__about {
+        text-align: justify;
+        padding-bottom: 24px;  
+    }
+
+    .our__friends__pop-up__characteristic {    
+        text-align: start;
+    }
+
+    .our__friends__pop-up__btn-close {
+        right: -32px;
     }
 
     .in__addition {
