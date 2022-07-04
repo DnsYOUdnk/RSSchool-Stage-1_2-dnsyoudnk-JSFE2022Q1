@@ -35,3 +35,7 @@ export interface IAppView {
     drawSources(data: IApiResponse): void;
 }
 
+export enum HTTPCodes {
+    Unauthorized = 401,
+    Not_Found = 404
+}
