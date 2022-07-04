@@ -21,7 +21,7 @@ class News implements IDraw<Article> {
             })`;
 
             const newsCloneAuthor = newsClone.querySelector('.news__meta-author') as HTMLLIElement;
-            newsCloneAuthor.textContent = item.author || item.source.name;
+            newsCloneAuthor.textContent = item.author || item.sources.name;
             const newsCloneDate = newsClone.querySelector('.news__meta-date') as HTMLLIElement;
             newsCloneDate.textContent = item.publishedAt
             .slice(0, 10)
@@ -31,7 +31,7 @@ class News implements IDraw<Article> {
             const newsCloneTitle = newsClone.querySelector('.news__description-title') as HTMLHeadingElement;
             newsCloneTitle.textContent = item.title;
             const newsCloneSource = newsClone.querySelector('.news__description-source') as HTMLHeadingElement;
-            newsCloneSource.textContent = item.source.name;
+            newsCloneSource.textContent = item.sources.name;
             const newsCloneContent = newsClone.querySelector('.news__description-content') as HTMLParagraphElement;
             newsCloneContent.textContent = item.description;
             const newsCloneLinkMore = newsClone.querySelector('.news__read-more a') as HTMLAnchorElement;

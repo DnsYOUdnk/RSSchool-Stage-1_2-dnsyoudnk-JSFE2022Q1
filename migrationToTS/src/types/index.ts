@@ -1,7 +1,8 @@
-export interface INewsResponse {
+export interface IApiResponse {
     status: string;
-    totalResults: number;
-    articles: Article[];
+    totalResults?: number;
+    articles?: Article[];
+    sources?: Source[];
 }
 
 export type Article = {
@@ -9,7 +10,7 @@ export type Article = {
     content: string;
     description: string;
     publishedAt: string;
-    source: Source;
+    sources: Source;
     title: string;
     url: string;
     urlToImage: string;
@@ -27,5 +28,10 @@ export type Source = {
 
 export interface IDraw<T> {
     draw: (data: T[]) => void;
-} 
+}
+
+export interface IAppView {
+    drawNews(data: IApiResponse): void;
+    drawSources(data: IApiResponse): void;
+}
 
