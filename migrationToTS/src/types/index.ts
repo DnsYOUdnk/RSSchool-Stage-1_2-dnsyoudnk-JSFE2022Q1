@@ -9,13 +9,13 @@ export type Article = {
     content: string;
     description: string;
     publishedAt: string;
-    source: ISource;
+    source: Source;
     title: string;
     url: string;
     urlToImage: string;
 }
 
-export interface ISource {
+export type Source = {
     id: string;
     name: string;
     description?: string;
