@@ -1,8 +1,8 @@
 import './sources.css';
 import { IDraw, Source } from '../../../types/index';
 
-class Sources implements IDraw<Source>{
-    draw(data: Source[]):void {
+class Sources implements IDraw<Source> {
+    draw(data: Source[]): void {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 

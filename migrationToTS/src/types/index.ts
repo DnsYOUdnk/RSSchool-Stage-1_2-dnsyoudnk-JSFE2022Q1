@@ -10,11 +10,11 @@ export type Article = {
     content: string;
     description: string;
     publishedAt: string;
-    sources: Source;
+    source: Source;
     title: string;
     url: string;
     urlToImage: string;
-}
+};
 
 export type Source = {
     id: string;
@@ -24,7 +24,7 @@ export type Source = {
     category?: string;
     language?: string;
     country?: string;
-}
+};
 
 export interface IDraw<T> {
     draw: (data: T[]) => void;
@@ -37,5 +37,17 @@ export interface IAppView {
 
 export enum HTTPCodes {
     Unauthorized = 401,
-    Not_Found = 404
+    Not_Found = 404,
 }
+
+export type generalApiOptions = {
+    apiKey?: string;
+    sources?: string;
+};
+
+export type requestAPI = {
+    endpoint: string;
+    options: generalApiOptions;
+};
+
+export type getContentFunction = (data: IApiResponse) => void;

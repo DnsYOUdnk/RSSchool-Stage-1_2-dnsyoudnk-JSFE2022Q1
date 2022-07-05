@@ -2,7 +2,7 @@ import './news.css';
 import { IDraw, Article } from '../../../types/index';
 
 class News implements IDraw<Article> {
-    draw(data: Article[]):void {
+    draw(data: Article[]): void {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment = document.createDocumentFragment();
@@ -16,22 +16,16 @@ class News implements IDraw<Article> {
             }
 
             const newsCloneImage = newsClone.querySelector('.news__meta-photo') as HTMLDivElement;
-            newsCloneImage.style.backgroundImage = `url(${
-                item.urlToImage || 'img/news_placeholder.jpg'
-            })`;
+            newsCloneImage.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
 
             const newsCloneAuthor = newsClone.querySelector('.news__meta-author') as HTMLLIElement;
-            newsCloneAuthor.textContent = item.author || item.sources.name;
+            newsCloneAuthor.textContent = item.author || item.source.name;
             const newsCloneDate = newsClone.querySelector('.news__meta-date') as HTMLLIElement;
-            newsCloneDate.textContent = item.publishedAt
-            .slice(0, 10)
-            .split('-')
-            .reverse()
-            .join('-');
+            newsCloneDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
             const newsCloneTitle = newsClone.querySelector('.news__description-title') as HTMLHeadingElement;
             newsCloneTitle.textContent = item.title;
             const newsCloneSource = newsClone.querySelector('.news__description-source') as HTMLHeadingElement;
-            newsCloneSource.textContent = item.sources.name;
+            newsCloneSource.textContent = item.source.name;
             const newsCloneContent = newsClone.querySelector('.news__description-content') as HTMLParagraphElement;
             newsCloneContent.textContent = item.description;
             const newsCloneLinkMore = newsClone.querySelector('.news__read-more a') as HTMLAnchorElement;
