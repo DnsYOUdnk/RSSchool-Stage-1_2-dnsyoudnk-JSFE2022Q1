@@ -1,7 +1,8 @@
 import AppLoader from './appLoader';
+import { getContentFunction, IApiController } from '../../types/index'
 
-class AppController extends AppLoader {
-    getSources(callback) {
+class AppController extends AppLoader implements IApiController{
+    getSources(callback: getContentFunction): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -10,7 +11,8 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e, callback) {
+    getNews(e: PointerEvent, callback: getContentFunction) {
+        console.log(e)
         let target = e.target;
         const newsContainer = e.currentTarget;
 

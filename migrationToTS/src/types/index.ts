@@ -47,7 +47,12 @@ export type generalApiOptions = {
 
 export type requestAPI = {
     endpoint: string;
-    options: generalApiOptions;
+    options?: generalApiOptions;
 };
 
 export type getContentFunction = (data: IApiResponse) => void;
+
+export interface IApiController {
+    getSources(callback:getContentFunction): void;
+    getNews(e: PointerEvent, callback: getContentFunction): void;
+}
