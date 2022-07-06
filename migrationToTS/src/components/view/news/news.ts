@@ -16,7 +16,7 @@ class News implements IDraw<Article> {
             }
 
             const newsCloneImage = newsClone.querySelector('.news__meta-photo') as HTMLDivElement;
-            newsCloneImage.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+            newsCloneImage.style.backgroundImage = `url(${item.urlToImage || 'image/news_placeholder.jpg'})`;
 
             const newsCloneAuthor = newsClone.querySelector('.news__meta-author') as HTMLLIElement;
             newsCloneAuthor.textContent = item.author || item.source.name;
