@@ -53,6 +53,6 @@ export type requestAPI = {
 export type getContentFunction = (data: IApiResponse) => void;
 
 export interface IApiController {
-    getSources(callback:getContentFunction): void;
+    getSources(callback: getContentFunction): void;
     getNews(e: PointerEvent, callback: getContentFunction): void;
 }
