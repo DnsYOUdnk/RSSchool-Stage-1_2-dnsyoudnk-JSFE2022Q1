@@ -60,5 +60,14 @@ export interface IAppController {
 export interface IApp {
     controller: IAppController;
     view: IAppView;
-    start:() => void;
+    start: () => void;
+}
+
+export interface ILoader {
+    baseLink: string;
+    options: generalApiOptions;
+    getResp({ endpoint, options }: requestAPI, callback: getContentFunction): void;
+    errorHandler(res: Response): Response;
+    makeUrl(options: generalApiOptions, endpoint: string): string;
+    load(method: string, endpoint: string, callback: getContentFunction, options: generalApiOptions): void;
 }

@@ -1,6 +1,6 @@
-import { HTTPCodes, generalApiOptions, requestAPI, getContentFunction } from '../../types';
+import { HTTPCodes, generalApiOptions, requestAPI, getContentFunction, ILoader } from '../../types';
 
-class Loader {
+class Loader implements ILoader {
     baseLink: string;
     options: generalApiOptions;
 
@@ -38,7 +38,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: getContentFunction, options = {}): void {
+    load(method: string, endpoint: string, callback: getContentFunction, options: generalApiOptions = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
