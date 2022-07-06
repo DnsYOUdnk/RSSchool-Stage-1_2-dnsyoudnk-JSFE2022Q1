@@ -1,7 +1,7 @@
 import AppLoader from './appLoader';
-import { getContentFunction, IApiController } from '../../types/index';
+import { getContentFunction, IAppController } from '../../types/index';
 
-class AppController extends AppLoader implements IApiController {
+class AppController extends AppLoader implements IAppController {
     getSources(callback: getContentFunction): void {
         super.getResp(
             {

@@ -1,4 +1,5 @@
 import { HTTPCodes, generalApiOptions, requestAPI, getContentFunction } from '../../types';
+
 class Loader {
     baseLink: string;
     options: generalApiOptions;
@@ -27,7 +28,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: generalApiOptions, endpoint: string) {
+    makeUrl(options: generalApiOptions, endpoint: string): string {
         const urlOptions: { [key: string]: string } = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
         Object.keys(urlOptions).forEach((key) => {

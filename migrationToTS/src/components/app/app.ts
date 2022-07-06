@@ -1,10 +1,11 @@
-import { IApiController, IAppView } from '../../types';
+import { IAppController, IAppView, IApp } from '../../types';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 
-class App {
-    controller: IApiController;
+class App implements IApp {
+    controller: IAppController;
     view: IAppView;
+
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();

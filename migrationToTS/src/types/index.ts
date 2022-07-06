@@ -52,7 +52,13 @@ export type requestAPI = {
 
 export type getContentFunction = (data: IApiResponse) => void;
 
-export interface IApiController {
+export interface IAppController {
     getSources(callback: getContentFunction): void;
     getNews(e: MouseEvent, callback: getContentFunction): void;
+}
+
+export interface IApp {
+    controller: IAppController;
+    view: IAppView;
+    start:() => void;
 }
