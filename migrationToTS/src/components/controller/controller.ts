@@ -11,7 +11,7 @@ class AppController extends AppLoader implements IApiController {
         );
     }
 
-    getNews(e: PointerEvent, callback: getContentFunction) {
+    getNews(e: MouseEvent, callback: getContentFunction) {
         let target = e.target as HTMLSpanElement;
         const newsContainer = e.currentTarget as HTMLDivElement;
         while (target !== newsContainer) {
