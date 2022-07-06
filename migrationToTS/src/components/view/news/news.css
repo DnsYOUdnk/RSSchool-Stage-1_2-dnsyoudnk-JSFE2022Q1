@@ -1,8 +1,14 @@
+.news {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 1.6%;
+}
+
 .news__item {
     display: flex;
     flex-direction: column;
-    margin: 1rem auto;
-    margin-bottom: 1.6%;
     background: #fff;
     color: #333;
     line-height: 1.4;
