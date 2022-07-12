@@ -1,5 +1,5 @@
-import './news.css';
 import { IDraw, Article } from '../../../types/index';
+import './news.css';
 
 class News implements IDraw<Article> {
     draw(data: Article[]): void {

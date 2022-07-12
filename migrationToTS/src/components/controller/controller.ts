@@ -1,5 +1,5 @@
-import AppLoader from './appLoader';
 import { getContentFunction, IAppController } from '../../types/index';
+import AppLoader from './appLoader';
 
 class AppController extends AppLoader implements IAppController {
     getSources(callback: getContentFunction): void {
