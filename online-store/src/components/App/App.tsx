@@ -9,9 +9,10 @@ import "./App.css";
 function App() {
   const cartData = getCartData();
   const [cart, setCart] = useState(cartData);
+  const [searchValue, setSearchValue] = useState('');
 
   return (
-    <Context.Provider value={{addToCart, cart, setCart}}>
+    <Context.Provider value={{addToCart, cart, setCart, searchValue, setSearchValue}}>
       <div className="App">
         <Header />
         <Main />

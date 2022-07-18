@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Context } from "../../StoreContext";
 import { CatalogItem } from "../CatalogItem/CatalogItem";
 import left from "./../../assets/svg/left.svg";
 import right from "./../../assets/svg/right.svg";
@@ -7,6 +8,7 @@ import "./Catalog.css";
 export const Catalog = function () {
   const ul = useRef<HTMLUListElement>(null);
   const [data, setData] = useState([]);
+  const {searchValue} = useContext(Context)
 
   const handlePrevNext = (direction: string) => {
     const li =
@@ -67,7 +69,8 @@ export const Catalog = function () {
       </div>
       <div className="catalog">
       {data.length > 0 ? <ul ref={ul} className="catalog__items">
-            {data.map((product ,index) => {
+            {data.filter(({title}) => title.toLowerCase().includes(searchValue.toLowerCase()))
+                .map((product ,index) => {
               return  <CatalogItem key={index} product={product}/>
             })}
            

@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../../StoreContext';
-import cartSVG from './../../assets/svg/cart.svg'
-import './Header.css'
+import { SearchInput } from '../SearchInput/SearchInput';
+import cartSVG from './../../assets/svg/cart.svg';
+import './Header.css';
 
 export const Header = function() {
   const { cart } = useContext(Context);
@@ -21,7 +22,7 @@ export const Header = function() {
       <Link to='/'>Online Store</Link>
     </div>
     <div className="header__widget">
-      <input type="text" id="header__widget__value" placeholder="Search"/>
+      <SearchInput/>
       <Link to="/" className="header__cart"><img src={cartSVG} alt="cart"/><span className="header__cart_count">{getCartCount()}</span></Link>
     </div>
   </header>
