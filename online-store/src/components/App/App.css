@@ -1,0 +1,8 @@
+.App {
+  height: calc(100% - 140px);
+  background-image: url("../../assets/svg/bg.svg");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  margin: 15px;
+  padding: 55px 85px;
+}

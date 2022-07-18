@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import cart from './../../assets/svg/cart.svg'
+import './Header.css'
 
 export const Header = function() {
   return (
@@ -8,7 +10,7 @@ export const Header = function() {
     </div>
     <div className="header__widget">
       <input type='text'id='header__widget__value' placeholder='Search'/>
-      <Link to='/'>Cart</Link>
+      <Link to='/'><img src={cart} alt="cart"/></Link>
     </div>
   </header>
 )}
