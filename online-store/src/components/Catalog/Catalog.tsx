@@ -1,14 +1,17 @@
+import left from "./../../assets/svg/left.svg";
+import right from "./../../assets/svg/right.svg";
+
 export const Catalog = function() {
     return (
     <>
       <div className="main__nav">
         <div className="main__filter">
-          <div className="main__filter__name">Products</div>
-          <button className="main__filter__btn">Filters</button>
+          <div className="main__filter__name">All products</div>
+          <button className="main__filter__btn" title="Filters"></button>
         </div>
         <div className="main__setting__btn">
-          <button className="main__setting__btn-prev" >Prev</button>
-          <button className="main__setting__btn-next" >Next</button>
+          <button className="main__setting__btn-prev" ><img src={left} alt="left"/></button>
+          <button className="main__setting__btn-next" ><img src={right} alt="right"/></button>
         </div>
       </div> 
       <div className="catalog">
