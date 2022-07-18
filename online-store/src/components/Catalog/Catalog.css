@@ -5,7 +5,7 @@
 
 .catalog__item {
   width: 300px;
-  height: 480px;
+  height: 498px;
 
   flex: none;
   border-radius: 35px;
@@ -44,9 +44,8 @@
   font-size: 32px;
   font-weight: bold;
   color: #473889;
-  margin-top: 30px;
-  height: 34px;
-  overflow: hidden;
+  margin-top: 10px;
+  height: 74px;
 }
 
 .catalog__caption__subname,
