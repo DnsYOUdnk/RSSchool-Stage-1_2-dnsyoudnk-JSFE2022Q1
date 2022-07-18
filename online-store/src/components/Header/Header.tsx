@@ -7,7 +7,8 @@ export const Header = function() {
       <Link to='/'>Online Store</Link>
     </div>
     <div className="header__widget">
-      Widget
+      <input type='text'id='header__widget__value' placeholder='Search'/>
+      <Link to='/'>Cart</Link>
     </div>
   </header>
 )}
