@@ -1,5 +1,7 @@
 import left from "./../../assets/svg/left.svg";
 import right from "./../../assets/svg/right.svg";
+import star from "./../../assets/svg/star.svg";
+import './Catalog.css';
 
 export const Catalog = function() {
     return (
@@ -21,6 +23,10 @@ export const Catalog = function() {
                 <div className="catalog__caption">
                   <div className="catalog__caption__name">title</div>
                   <div className="catalog__caption__subname">category</div>
+                  <div className="catalog__caption__intellegence">
+                    <div className="catalog__caption__rating">Rating reviews: <span>1 <img src={star} alt="star" /></span></div>
+                    <div className="catalog__caption__count">Available in stock: 12</div>
+                  </div>
                   <div className="catalog__caption__price">10 $</div>
                   <button className="catalog__caption__btn">+</button>
                 </div>
@@ -30,6 +36,10 @@ export const Catalog = function() {
                 <div className="catalog__caption">
                   <div className="catalog__caption__name">title</div>
                   <div className="catalog__caption__subname">category</div>
+                  <div className="catalog__caption__intellegence">
+                    <div className="catalog__caption__rating">Rating reviews: <span>1 <img src={star} alt="star" /></span></div>
+                    <div className="catalog__caption__count">Available in stock: 12</div>
+                  </div>
                   <div className="catalog__caption__price">10 $</div>
                   <button className="catalog__caption__btn">+</button>
                 </div>
@@ -39,6 +49,10 @@ export const Catalog = function() {
                 <div className="catalog__caption">
                   <div className="catalog__caption__name">title</div>
                   <div className="catalog__caption__subname">category</div>
+                  <div className="catalog__caption__intellegence">
+                    <div className="catalog__caption__rating">Rating reviews: <span>1 <img src={star} alt="star" /></span></div>
+                    <div className="catalog__caption__count">Available in stock: 12</div>
+                  </div>
                   <div className="catalog__caption__price">10 $</div>
                   <button className="catalog__caption__btn">+</button>
                 </div>
@@ -48,6 +62,10 @@ export const Catalog = function() {
                 <div className="catalog__caption">
                   <div className="catalog__caption__name">title</div>
                   <div className="catalog__caption__subname">category</div>
+                  <div className="catalog__caption__intellegence">
+                    <div className="catalog__caption__rating">Rating reviews: <span>1 <img src={star} alt="star" /></span></div>
+                    <div className="catalog__caption__count">Available in stock: 12</div>
+                  </div>
                   <div className="catalog__caption__price">10 $</div>
                   <button className="catalog__caption__btn">+</button>
                 </div>
@@ -57,6 +75,10 @@ export const Catalog = function() {
                 <div className="catalog__caption">
                   <div className="catalog__caption__name">title</div>
                   <div className="catalog__caption__subname">category</div>
+                  <div className="catalog__caption__intellegence">
+                    <div className="catalog__caption__rating">Rating reviews: <span>1 <img src={star} alt="star" /></span></div>
+                    <div className="catalog__caption__count">Available in stock: 12</div>
+                  </div>
                   <div className="catalog__caption__price">10 $</div>
                   <button className="catalog__caption__btn">+</button>
                 </div>
