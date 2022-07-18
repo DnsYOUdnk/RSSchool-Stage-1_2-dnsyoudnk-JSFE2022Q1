@@ -11,7 +11,7 @@ export const CatalogItem = function ({product}) {
   const { addToCart, cart, setCart } = useContext(Context);
 
   return (
-    <li className={product.cart ? "catalog__item" : "catalog__item active"}>
+    <li className={product.cart ? "catalog__item active" : "catalog__item"}>
       <div className="catalog__item__img">
         <img src={image} alt="umg" />
       </div>
