@@ -2,8 +2,7 @@ export const getCartData = () => {
     return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 }
 
-export const addToCart = (product, cart, setCart) => {
-    let findIndex = cart.findIndex(({id}) => id === product.id );
+export const addToCart = (product, cart, setCart, findIndex) => {
 
     if( findIndex !== -1) {
         product.cart = false;

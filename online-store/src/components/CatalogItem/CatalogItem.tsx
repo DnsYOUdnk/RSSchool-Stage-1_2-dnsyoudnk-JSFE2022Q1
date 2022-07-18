@@ -9,9 +9,11 @@ export const CatalogItem = function ({product}) {
 
   
   const { addToCart, cart, setCart } = useContext(Context);
+  
+  let findIndex = cart.findIndex(({id}) => id === product.id );
 
   return (
-    <li className={product.cart ? "catalog__item active" : "catalog__item"}>
+    <li className={findIndex !== -1 ? "catalog__item active" : "catalog__item"}>
       <div className="catalog__item__img">
         <img src={image} alt="umg" />
       </div>
@@ -28,7 +30,7 @@ export const CatalogItem = function ({product}) {
           <div className="catalog__caption__count">Available in stock: {rating.count}</div>
         </div>
         <div className="catalog__caption__price">{price} $</div>
-        <button id={id} onClick={()=>{addToCart(product, cart, setCart)}} className="catalog__caption__btn" title="Add to cart">{product.cart ? '-' : '+'}</button>
+        <button id={id} onClick={()=>{addToCart(product, cart, setCart, findIndex)}} className="catalog__caption__btn" title="Add to cart">{findIndex !== -1 ? '-' : '+'}</button>
       </div>
     </li>
   );
