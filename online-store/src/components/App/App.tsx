@@ -1,11 +1,10 @@
+import { Header } from '../Header/Header';
 import './App.css';
 
-
 function App() {
-  const x = 10;
-  console.log(x)
   return (
     <div className="App">
+      < Header />
     </div>
   );
 }
