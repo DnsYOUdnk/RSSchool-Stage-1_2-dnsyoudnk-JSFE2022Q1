@@ -50,10 +50,6 @@ a.header__cart {
   position: relative;
 }
 
-input #header__widget__value:invalid ~ span:after {
-  
-}
-
 .header__cart_count {
   position: absolute;
   top: 34px;

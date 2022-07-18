@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../../StoreContext";
 import { CatalogItem } from "../CatalogItem/CatalogItem";
+import { FilterModal } from "../FilterModal/FilterModal";
 import left from "./../../assets/svg/left.svg";
 import right from "./../../assets/svg/right.svg";
 import "./Catalog.css";
@@ -8,7 +9,10 @@ import "./Catalog.css";
 export const Catalog = function () {
   const ul = useRef<HTMLUListElement>(null);
   const [data, setData] = useState([]);
-  const {searchValue} = useContext(Context)
+  const { searchValue } = useContext(Context);
+  const [showFilterModal, setShowFilterModal] = useState(false);
+  const [filterValue, setFilterValue] = useState('default');
+  const [defaultData, setDefaultData] = useState([]);
 
   const handlePrevNext = (direction: string) => {
     const li =
@@ -35,20 +39,42 @@ export const Catalog = function () {
     liFirst.style.marginLeft = `-${ml}px`;
   };
 
-  useEffect(()=>{
-    fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(json=>{
-              setData([...json])
-            })
-  },[])
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => {
+        setData([...json]);
+        setDefaultData([...json]);
+      });
+  }, []);
+  
+  useEffect(() => {
+    if(filterValue === 'abs'){
+      const sortData = data.sort((a,b)=>{
+        return a.price - b.price
+      })
+      setData(sortData)
+    } else if (filterValue === 'desc') {
+      const sortData = data.sort((a,b)=>{
+        return b.price - a.price
+      })
+      setData(sortData)
+    } else if (filterValue === 'default'){
+      setData([...defaultData])
+    }
+  }, [filterValue])
+
+  const openFilterModal = () => {
+    setShowFilterModal(true)
+  }
 
   return (
     <>
       <div className="main__nav">
         <div className="main__filter">
           <div className="main__filter__name">All products</div>
-          <button className="main__filter__btn" title="Filters"></button>
+          <button className="main__filter__btn" title="Filters" onClick={() => {openFilterModal()}}></button>
+          {showFilterModal && <FilterModal setShowFilterModal={setShowFilterModal} filterValue={filterValue} setFilterValue={setFilterValue} />}
         </div>
         <div className="main__setting__btn">
           <button
@@ -68,13 +94,20 @@ export const Catalog = function () {
         </div>
       </div>
       <div className="catalog">
-      {data.length > 0 ? <ul ref={ul} className="catalog__items">
-            {data.filter(({title}) => title.toLowerCase().includes(searchValue.toLowerCase()))
-                .map((product ,index) => {
-              return  <CatalogItem key={index} product={product}/>
-            })}
-           
-          </ul> : <h3>Loading.....</h3> }
+        {data.length > 0 ? (
+          <ul ref={ul} className="catalog__items">
+            {data
+              .filter(({ title }) => {
+               return  title.toLowerCase().includes(searchValue.toLowerCase())
+              })
+              .map((product, index) => {
+                return <CatalogItem key={index} product={product} />;
+              })
+              }
+          </ul>
+        ) : (
+          <h3>Loading.....</h3>
+        )}
       </div>
     </>
   );
