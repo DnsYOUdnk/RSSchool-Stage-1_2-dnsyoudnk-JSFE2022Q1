@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom"
+import github from "./../../assets/image/icon-github.png";
+import rs_school_js from "./../../assets/svg/rs_school_js.svg";
+import "./Footer.css"
 
 export const Footer = function() {
     return (
         <footer className="footer">
             <div className="footer__github">
-                <Link to="https://github.com/DnsYOUdnk" target="_blank"><img src="./image/icon-github.png" alt="icon-github" /></Link>
+                <a href="https://github.com/DnsYOUdnk" target="_blank" rel="noreferrer"><img src={github} alt="icon-github" /></a>
             </div>
             <div className="footer__rss">
-                <Link to="https://rs.school/js/" target="_blank"><img src="./image/rs_school_js.svg" alt="icon__rss" /></Link>
+                <a href="https://github.com/rolling-scopes-school/tasks/blob/master/tasks/online-store/README.md" target="_blank" rel="noreferrer"><img src={rs_school_js} alt="icon__rss" /></a>
             </div>
         </footer>
     )

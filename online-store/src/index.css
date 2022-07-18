@@ -5,19 +5,19 @@
 
 @font-face {
   font-family: "GT Walsheim Pro";
-  src: url("../fonts/GTWalsheimPro-Regular.ttf");
+  src: url("./assets/fonts/GTWalsheimPro-Regular.ttf");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "GT Walsheim Pro";
-  src: url("../fonts/GTWalsheimPro-CondensedMedium.ttf");
+  src: url("./assets/fonts/GTWalsheimPro-CondensedMedium.ttf");
   font-weight: 600;
 }
 
 @font-face {
   font-family: "GT Walsheim Pro";
-  src: url("../fonts/GTWalsheimPro-CondensedBold.ttf");
+  src: url("./assets/fonts/GTWalsheimPro-CondensedBold.ttf");
   font-weight: bold;
 }
 
@@ -30,5 +30,4 @@ html {
 
 #root {
   height: 100vh;
-  overflow: hidden;
 }
