@@ -38,7 +38,6 @@ export const Catalog = function () {
             .then(res=>res.json())
             .then(json=>{
               setData([...json])
-              // setDefaultData([...json])
             })
   },[])
 
@@ -52,12 +51,14 @@ export const Catalog = function () {
         <div className="main__setting__btn">
           <button
             className="main__setting__btn-prev"
+            title="previous product"
             onClick={() => handlePrevNext("prev")}
           >
             <img src={left} alt="left" />
           </button>
           <button
             className="main__setting__btn-next"
+            title="next product"
             onClick={() => handlePrevNext("next")}
           >
             <img src={right} alt="right" />

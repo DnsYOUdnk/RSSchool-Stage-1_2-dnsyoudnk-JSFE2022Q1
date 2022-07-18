@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { Context } from "../../StoreContext";
 import star from "./../../assets/svg/star.svg";
 
 export const CatalogItem = function ({product}) {
@@ -5,8 +7,11 @@ export const CatalogItem = function ({product}) {
   let {id, image, title, price, category, rating} = product;
   title = title.split(' ').slice(0,3).join(' ');
 
+  
+  const { addToCart, cart, setCart } = useContext(Context);
+
   return (
-    <li className="catalog__item">
+    <li className={product.cart ? "catalog__item" : "catalog__item active"}>
       <div className="catalog__item__img">
         <img src={image} alt="umg" />
       </div>
@@ -23,7 +28,7 @@ export const CatalogItem = function ({product}) {
           <div className="catalog__caption__count">Available in stock: {rating.count}</div>
         </div>
         <div className="catalog__caption__price">{price} $</div>
-        <button className="catalog__caption__btn">+</button>
+        <button id={id} onClick={()=>{addToCart(product, cart, setCart)}} className="catalog__caption__btn" title="Add to cart">{product.cart ? '-' : '+'}</button>
       </div>
     </li>
   );
