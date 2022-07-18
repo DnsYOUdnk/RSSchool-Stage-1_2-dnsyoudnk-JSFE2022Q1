@@ -45,3 +45,13 @@
 #header__widget__value::placeholder {
   color: #473889;
 }
+
+a.header__cart {
+  position: relative;
+}
+
+.header__cart_count {
+  position: absolute;
+  top: 34px;
+  left: 24px;
+}
