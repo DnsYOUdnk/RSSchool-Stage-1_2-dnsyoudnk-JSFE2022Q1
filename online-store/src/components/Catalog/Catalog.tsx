@@ -3,17 +3,20 @@ import { Context } from "../../StoreContext";
 import { IProduct } from "../../types";
 import { CatalogItem } from "../CatalogItem/CatalogItem";
 import { FilterModal } from "../FilterModal/FilterModal";
+import { NotFoundData } from "../NotFoundData/NotFoundData";
 import left from "./../../assets/svg/left.svg";
 import right from "./../../assets/svg/right.svg";
 import "./Catalog.css";
 
 export const Catalog = function () {
   const ul = useRef<HTMLUListElement>(null);
-  const [data, setData] = useState<IProduct[]>([]);
   const { searchValue } = useContext(Context);
+
+  const [data, setData] = useState<IProduct[]>([]);
   const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
   const [filterValue, setFilterValue] = useState<string>('default');
   const [defaultData, setDefaultData] = useState<IProduct[]>([]);
+  const [filterData, setFilterData] = useState<IProduct[]>([]);
 
   const handlePrevNext = (direction: string) => {
     const li =
@@ -46,6 +49,7 @@ export const Catalog = function () {
       .then((json: IProduct[]): void => {
         setData([...json]);
         setDefaultData([...json]);
+        setFilterData([...json]);
       });
   }, []);
   
@@ -63,7 +67,12 @@ export const Catalog = function () {
     } else if (filterValue === 'default'){
       setData([...defaultData])
     }
-  }, [filterValue])
+    const filterArr = data.filter(({ title }) => {
+       return  title.toLowerCase().includes(searchValue!.toLowerCase())
+      })
+    setFilterData(filterArr)
+
+  }, [filterValue, searchValue])
 
   const openFilterModal = () => {
     setShowFilterModal(true)
@@ -97,14 +106,11 @@ export const Catalog = function () {
       <div className="catalog">
         {data.length > 0 ? (
           <ul ref={ul} className="catalog__items">
-            {data
-              .filter(({ title }) => {
-               return  title.toLowerCase().includes(searchValue!.toLowerCase())
-              })
-              .map((product, index) => {
+            {filterData.length > 0 ?
+              filterData.map((product, index) => {
                 return <CatalogItem key={index} product={product} />;
-              })
-              }
+              }) : <NotFoundData />
+              } 
           </ul>
         ) : (
           <h3>Loading.....</h3>
