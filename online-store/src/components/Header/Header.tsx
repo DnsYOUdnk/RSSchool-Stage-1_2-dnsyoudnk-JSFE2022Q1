@@ -8,7 +8,8 @@ import './Header.css';
 export const Header = function() {
   const { cart } = useContext(Context);
 
-  const getCartCount = () => {
+  const getCartCount = (): number | string => {
+    if(!cart) return '';
     if(cart.length === 0) {
       return ''
     } else {

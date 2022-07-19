@@ -1,19 +1,22 @@
-export const getCartData = () => {
-    return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
-}
+import { IProduct, setCartState } from "../types";
 
-export const addToCart = (product, cart, setCart, findIndex) => {
+export const getCartData = (): IProduct[] => {
+  const value = localStorage.getItem("cart");
+  return value && typeof value === "string"
+    ? JSON.parse(value)
+    : [];
+};
 
-    if( findIndex !== -1) {
-        product.cart = false;
-        cart = cart.filter((_, id) => id !== findIndex)
-    } else if(cart.length < 20) {
-        product.cart = true;
-        cart.push(product)
-    } else {
-        alert('Sorry, all slots are full')
-    }
+export const addToCart = (product: IProduct, cart:IProduct[], setCart:setCartState, findIndex: number): void => {
 
-    localStorage.setItem('cart', JSON.stringify(cart))
-    setCart([...cart])
+  if (findIndex !== -1) {
+    cart = cart.filter((_: IProduct, id: number) => id !== findIndex);
+  } else if (cart.length < 20) {
+    cart.push(product);
+  } else {
+    alert("Sorry, all slots are full");
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  setCart([...cart]);
 }

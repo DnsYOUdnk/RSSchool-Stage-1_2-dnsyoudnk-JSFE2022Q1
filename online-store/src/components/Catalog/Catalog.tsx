@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../../StoreContext";
+import { IProduct } from "../../types";
 import { CatalogItem } from "../CatalogItem/CatalogItem";
 import { FilterModal } from "../FilterModal/FilterModal";
 import left from "./../../assets/svg/left.svg";
@@ -8,11 +9,11 @@ import "./Catalog.css";
 
 export const Catalog = function () {
   const ul = useRef<HTMLUListElement>(null);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IProduct[]>([]);
   const { searchValue } = useContext(Context);
-  const [showFilterModal, setShowFilterModal] = useState(false);
-  const [filterValue, setFilterValue] = useState('default');
-  const [defaultData, setDefaultData] = useState([]);
+  const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
+  const [filterValue, setFilterValue] = useState<string>('default');
+  const [defaultData, setDefaultData] = useState<IProduct[]>([]);
 
   const handlePrevNext = (direction: string) => {
     const li =
@@ -42,7 +43,7 @@ export const Catalog = function () {
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
-      .then((json) => {
+      .then((json: IProduct[]): void => {
         setData([...json]);
         setDefaultData([...json]);
       });
@@ -98,7 +99,7 @@ export const Catalog = function () {
           <ul ref={ul} className="catalog__items">
             {data
               .filter(({ title }) => {
-               return  title.toLowerCase().includes(searchValue.toLowerCase())
+               return  title.toLowerCase().includes(searchValue!.toLowerCase())
               })
               .map((product, index) => {
                 return <CatalogItem key={index} product={product} />;

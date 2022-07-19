@@ -2,7 +2,7 @@ import github from "./../../assets/image/icon-github.png";
 import rs_school_js from "./../../assets/svg/rs_school_js.svg";
 import "./Footer.css"
 
-export const Footer = function() {
+export const Footer = function(): JSX.Element {
     return (
         <footer className="footer">
             <div className="footer__github">

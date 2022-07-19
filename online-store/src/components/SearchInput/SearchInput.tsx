@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../../StoreContext/index";
 
 export const SearchInput = () =>{
     const {setSearchValue} = useContext(Context);
 
-    const handleChange = (e) => {
-        setSearchValue(e.target.value)
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if(setSearchValue) {
+            setSearchValue(e.target.value)
+        }
     }
     
     return (
