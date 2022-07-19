@@ -1,16 +1,17 @@
-import './filterModal.css'
+import { IFilterModal } from '../../types';
+import './filterModal.css';
 
-export const FilterModal = ({setShowFilterModal, setFilterValue, filterValue}) => {
+export const FilterModal = ({setShowFilterModal, setFilterValue, filterValue}: IFilterModal) => {
     
-    const closeFilterModal = () => {
+    const closeFilterModal = (): void => {
         setShowFilterModal(false)
     }
 
-    const handleClick = (e) => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {
         e.stopPropagation()
     }
 
-    const clickFilter = (value) => {
+    const clickFilter = (value: string): void => {
         setFilterValue(value)
     }
 

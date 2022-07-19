@@ -26,3 +26,9 @@ export interface ICartState {
 }
 
 export type funcAddToCart =  (product: IProduct, cart:IProduct[], setCart:setCartState, findIndex: number) => void;
+
+export interface IFilterModal {
+  setShowFilterModal: Dispatch<SetStateAction<boolean>>;
+  filterValue: string;
+  setFilterValue: Dispatch<SetStateAction<string>>;
+}
