@@ -1,24 +1,27 @@
+import { useContext } from "react";
+import { Context } from "../../StoreContext";
 import { IFilterModal } from "../../types";
 import RangeSlider from "../RangeSlider/RangeSlider";
 import "./filterModal.css";
 
-export const FilterModal = ({
-    setShowFilterModal,
-    setFilterValue,
-    filterValue,
-  }: IFilterModal) => {
-    const closeFilterModal = (): void => {
-      setShowFilterModal(false);
-    };
+export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
+
+  const { filterValue, setFilterValue } = useContext(Context);
+
+  const closeFilterModal = (): void => {
+    setShowFilterModal(false);
+  };
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.stopPropagation();
   };
 
-  // const clickFilter = (value: string): void => {
-  //   setFilterValue(value);
-  //   console.log(value)
-  // };
+  const clickSortFilter = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    if(filterValue) {
+      filterValue.sort = event.currentTarget.value;
+      setFilterValue!({...filterValue});
+    }
+  };
 
   return (
     <div
@@ -31,7 +34,7 @@ export const FilterModal = ({
         <h3 className="filter__modal__title">Sorting panel</h3>
         <div className="filter__sort">
           <span>Choose the type of sorting</span>
-          <select name="sort-element" className="sort_element" >
+          <select name="sort-element" value={filterValue ? filterValue.sort : 'A-Z'} className="sort_element" onChange={(e) => clickSortFilter(e)}>
             <option value="A-Z">By name, from A to Z</option>
             <option value="Z-A">By name, from Z to A</option>
             <option value="Max">By price, from max to min</option>

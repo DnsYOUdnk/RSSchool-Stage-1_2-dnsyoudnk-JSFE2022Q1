@@ -23,7 +23,7 @@ export const addToCart = (product: IProduct, cart:IProduct[], setCart:setCartSta
 
 export const getFiltersValue = () => {
   const defaultFilterValue = {
-    sort: "default",
+    sort: "A-Z",
     priceRange: [0, 1000],
     countRange: [0, 700],
     checkPopular: false,
