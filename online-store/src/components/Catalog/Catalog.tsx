@@ -10,7 +10,7 @@ import "./Catalog.css";
 
 export const Catalog = function () {
   const ul = useRef<HTMLUListElement>(null);
-  const { searchValue, filterValue, setFilterValue } = useContext(Context);
+  const { searchValue, filterValue, cart } = useContext(Context);
 
   const [data, setData] = useState<IProduct[]>([]);
   const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
@@ -90,6 +90,12 @@ export const Catalog = function () {
       })
       .filter(({ rating }) => {
         return filterValue.checkPopular ? rating!.rate > 4 : true;
+      })
+      .filter((product) => {
+        const index = cart!.findIndex((elem) => {
+          return elem.title === product.title
+        })
+        return filterValue.checkBasket ? index !== -1 : true;
       })
       .filter(({ category }) => {
         if(arrCategories.length > 0) {

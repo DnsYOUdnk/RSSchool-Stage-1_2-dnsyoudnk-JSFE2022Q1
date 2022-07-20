@@ -38,6 +38,7 @@ export interface IFilterValue {
   priceRange: number[];
   countRange: number[];
   checkPopular: boolean;
+  checkBasket: boolean;
   categories: Categories[];
 }
 

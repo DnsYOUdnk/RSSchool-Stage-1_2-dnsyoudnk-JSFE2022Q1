@@ -27,6 +27,7 @@ export const getFiltersValue = () => {
     priceRange: [0, 1000],
     countRange: [0, 700],
     checkPopular: false,
+    checkBasket: false,
     categories: [
       {id: 1,name: "Men's clothing", checked: false}, 
       {id: 2,name: "Women's clothing", checked: false}, 

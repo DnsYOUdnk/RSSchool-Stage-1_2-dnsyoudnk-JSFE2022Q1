@@ -31,6 +31,13 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
     }
   };
 
+  const clickBasketFilter = (): void => {
+    if(filterValue) {
+      filterValue.checkBasket = !filterValue.checkBasket;
+      setFilterValue!({...filterValue});
+    }
+  };
+
   return (
     <div className="filter__modal" onClick={() => { closeFilterModal(); }}>
       <div className="filter__modal__body" onClick={(e) => handleClick(e)}>
@@ -65,6 +72,11 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
           <div className="filter__value__popular">
             <label>
               Popular products <input type="checkbox" name="popular_product" defaultChecked={filterValue!.checkPopular} id="popular_product" onClick={() => clickPopularFilter()}/>
+            </label>
+          </div>
+          <div className="filter__value__popular">
+            <label>
+              Products in the basket <input type="checkbox" name="basket_product" defaultChecked={filterValue!.checkBasket} id="basket_product" onClick={() => clickBasketFilter()}/>
             </label>
           </div>
         </div>
