@@ -28,9 +28,10 @@ export const FilterModal = ({
       }}
     >
       <div className="filter__modal__body" onClick={(e) => handleClick(e)}>
-        <h3>Sorting panel</h3>
+        <h3 className="filter__modal__title">Sorting panel</h3>
         <div className="filter__sort">
-          <select name="sort-element" id="sort_element" >
+          <span>Choose the type of sorting</span>
+          <select name="sort-element" className="sort_element" >
             <option value="A-Z">By name, from A to Z</option>
             <option value="Z-A">By name, from Z to A</option>
             <option value="Max">By price, from max to min</option>
@@ -39,12 +40,12 @@ export const FilterModal = ({
         </div>
         <div className="filter__range__items">
           <div className="filter__range__item">
-            <label htmlFor="range_price">Price range</label>
+            <span>Price range:</span>
             <RangeSlider valueRange={1000} markRange={'$'}/>
           </div>
           <div className="filter__range__item">
-            <label htmlFor="range_count">Count range</label>
-            <RangeSlider valueRange={700} markRange={'pieces'}/>
+            <span>Count range:</span>
+            <RangeSlider valueRange={700} markRange={'pc.'}/>
           </div>
         </div>
         <div className="filter__value">
@@ -80,13 +81,13 @@ export const FilterModal = ({
               Popular products <input type="checkbox" name="popular_product" id="popular_product" />
             </label>
           </div>
-          <div className="filter__buttons">
-            <div className="filter__buttons_reset">
-              <button className="btn__res">Reset filters</button>
-            </div>
-            <div className="filter__buttons_reset">
-              <button className="btn__res btn__res-all">Reset all</button>
-            </div>
+        </div>
+        <div className="filter__buttons">
+          <div className="filter__buttons_reset">
+            <button className="btn__res">Reset filters</button>
+          </div>
+          <div className="filter__buttons_reset">
+            <button className="btn__res btn__res-all">Reset all</button>
           </div>
         </div>
       </div>
