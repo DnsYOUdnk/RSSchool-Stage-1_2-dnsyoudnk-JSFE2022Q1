@@ -28,10 +28,9 @@ export const getFiltersValue = () => {
     countRange: [0, 700],
     checkPopular: false,
     categories: [
-      {id: 0,name: "Clothes", checked: false}, 
-      {id: 1,name: "Men's Clothes", checked: false}, 
-      {id: 2,name: "Women's Clothes", checked: false}, 
-      {id: 3,name: "Accessories", checked: false}, 
+      {id: 1,name: "Men's clothing", checked: false}, 
+      {id: 2,name: "Women's clothing", checked: false}, 
+      {id: 3,name: "Jewelery", checked: false}, 
       {id: 4,name: "Electronics", checked: false}
     ]
   }

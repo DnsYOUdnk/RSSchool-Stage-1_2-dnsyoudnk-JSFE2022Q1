@@ -46,3 +46,9 @@ export type Categories = {
   name: string;
   checked: boolean;
 }
+
+export interface IFilterChek {
+  id: number;
+  name: string;
+  checked: boolean;
+}

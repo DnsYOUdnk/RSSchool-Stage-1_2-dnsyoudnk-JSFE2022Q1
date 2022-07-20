@@ -74,6 +74,10 @@ export const Catalog = function () {
     }
     setData(sortData)
 
+    const arrCategories = filterValue.categories.map(({name, checked}) => {
+      return checked ? name.toLowerCase() : '';
+    }).filter((el) => el.length > 0);
+
     let filterArr = data.filter(({ title }) => {
        return  title.toLowerCase().includes(searchValue!.toLowerCase())
       })
@@ -86,6 +90,12 @@ export const Catalog = function () {
       })
       .filter(({ rating }) => {
         return filterValue.checkPopular ? rating!.rate > 4 : true;
+      })
+      .filter(({ category }) => {
+        if(arrCategories.length > 0) {
+          return arrCategories.includes(category);
+        }
+        return true
       })
 
     localStorage.setItem("filterValue", JSON.stringify(filterValue));

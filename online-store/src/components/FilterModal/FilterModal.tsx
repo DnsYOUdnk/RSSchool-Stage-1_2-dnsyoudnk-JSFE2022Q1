@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../../StoreContext";
 import { IFilterModal } from "../../types";
+import { FilterChek } from "../FilterCheck/FilterCheck";
 import RangeSlider from "../RangeSlider/RangeSlider";
 import "./filterModal.css";
 
@@ -23,7 +24,7 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
     }
   };
 
-  const clickPopularFilter = (event: React.MouseEvent<HTMLInputElement>): void => {
+  const clickPopularFilter = (): void => {
     if(filterValue) {
       filterValue.checkPopular = !filterValue.checkPopular;
       setFilterValue!({...filterValue});
@@ -55,35 +56,15 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
         </div>
         <div className="filter__value">
           <div className="filter__value__categories">
-            <div className="filter__value__item">
-              <label>
-                Clothes <input type="checkbox" name="clothes_product" id="clothes_product" />
-              </label>
-            </div>
-            <div className="filter__value__item">
-              <label>
-                Men's Clothes <input type="checkbox" name="men_product" id="men_product" />
-              </label>
-            </div>
-            <div className="filter__value__item">
-              <label>
-                Women's Clothes <input type="checkbox" name="women_product" id="women_product" />
-              </label>
-            </div>
-            <div className="filter__value__item">
-              <label>
-                Accessories <input type="checkbox" name="accessories_product" id="accessories_product" />
-              </label>
-            </div>
-            <div className="filter__value__item">
-              <label>
-                Electronics <input type="checkbox" name="electronics_product" id="electronics_product" />
-              </label>
-            </div>
+            {filterValue!.categories.map(({id, name, checked}, index) => {
+              return (
+                <FilterChek id={id} name={name} checked={checked} key={index} />
+              )
+            })}
           </div>
           <div className="filter__value__popular">
             <label>
-              Popular products <input type="checkbox" name="popular_product" defaultChecked={filterValue!.checkPopular} id="popular_product" onClick={(e) => clickPopularFilter(e)}/>
+              Popular products <input type="checkbox" name="popular_product" defaultChecked={filterValue!.checkPopular} id="popular_product" onClick={() => clickPopularFilter()}/>
             </label>
           </div>
         </div>
