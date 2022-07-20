@@ -14,6 +14,8 @@ export interface IContext {
     addToCart: funcAddToCart;
     cart: IProduct[];
     setCart: setCartState;
+    filterValue: IFilterValue; 
+    setFilterValue: Dispatch<SetStateAction<IFilterValue>>;
     searchValue: string;
     setSearchValue: Dispatch<SetStateAction<string>>;
 }
@@ -29,6 +31,20 @@ export type funcAddToCart =  (product: IProduct, cart:IProduct[], setCart:setCar
 
 export interface IFilterModal {
   setShowFilterModal: Dispatch<SetStateAction<boolean>>;
-  filterValue: string;
-  setFilterValue: Dispatch<SetStateAction<string>>;
+  filterValue: IFilterValue;
+  setFilterValue: Dispatch<SetStateAction<IFilterValue>>;
+}
+
+export interface IFilterValue {
+  sort: string;
+  priceRange: number[];
+  countRange: number[];
+  checkPopular: boolean;
+  categories: Categories[];
+}
+
+export type Categories = {
+  id: number;
+  name: string;
+  checked: boolean;
 }

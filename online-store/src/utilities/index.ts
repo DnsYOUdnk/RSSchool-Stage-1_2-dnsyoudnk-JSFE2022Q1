@@ -20,3 +20,23 @@ export const addToCart = (product: IProduct, cart:IProduct[], setCart:setCartSta
   localStorage.setItem("cart", JSON.stringify(cart));
   setCart([...cart]);
 }
+
+export const getFiltersValue = () => {
+  const defaultFilterValue = {
+    sort: "default",
+    priceRange: [0, 1000],
+    countRange: [0, 700],
+    checkPopular: false,
+    categories: [
+      {id: 0,name: "Clothes", checked: false}, 
+      {id: 1,name: "Men's Clothes", checked: false}, 
+      {id: 2,name: "Women's Clothes", checked: false}, 
+      {id: 3,name: "Accessories", checked: false}, 
+      {id: 4,name: "Electronics", checked: false}
+    ]
+  }
+  const filterValue = localStorage.getItem("filterValue");
+  return filterValue && typeof filterValue === "string"
+    ? JSON.parse(filterValue)
+    : defaultFilterValue;
+}

@@ -10,14 +10,12 @@ import "./Catalog.css";
 
 export const Catalog = function () {
   const ul = useRef<HTMLUListElement>(null);
-  const { searchValue } = useContext(Context);
+  const { searchValue, filterValue, setFilterValue } = useContext(Context);
 
   const [data, setData] = useState<IProduct[]>([]);
   const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
-  const [filterValue, setFilterValue] = useState<string>('default');
   const [defaultData, setDefaultData] = useState<IProduct[]>([]);
   const [filterData, setFilterData] = useState<IProduct[]>([]);
-
   const handlePrevNext = (direction: string) => {
     const li =
       null !== ul.current ? ([...ul.current.children] as HTMLLIElement[]) : [];
@@ -54,17 +52,18 @@ export const Catalog = function () {
   }, []);
   
   useEffect(() => {
-    if(filterValue === 'abs'){
+    if(!filterValue) return;
+    if(filterValue.sort === 'abs'){
       const sortData = data.sort((a,b)=>{
         return a.price - b.price
       })
       setData(sortData)
-    } else if (filterValue === 'desc') {
+    } else if (filterValue.sort === 'desc') {
       const sortData = data.sort((a,b)=>{
         return b.price - a.price
       })
       setData(sortData)
-    } else if (filterValue === 'default'){
+    } else if (filterValue.sort === 'default'){
       const sortData = data.sort((a,b)=>{
         return a.id - b.id
       })
@@ -73,9 +72,10 @@ export const Catalog = function () {
     const filterArr = data.filter(({ title }) => {
        return  title.toLowerCase().includes(searchValue!.toLowerCase())
       })
+    localStorage.setItem("filterValue", JSON.stringify(filterValue));
     setFilterData(filterArr)
 
-  }, [filterValue, searchValue])
+  }, [data, filterValue, searchValue])
 
   const openFilterModal = () => {
     setShowFilterModal(true)
@@ -87,7 +87,7 @@ export const Catalog = function () {
         <div className="main__filter">
           <div className="main__filter__name">All products</div>
           <button className="main__filter__btn" title="Filters" onClick={() => {openFilterModal()}}></button>
-          {showFilterModal && <FilterModal setShowFilterModal={setShowFilterModal} filterValue={filterValue} setFilterValue={setFilterValue} />}
+          {showFilterModal && <FilterModal setShowFilterModal={setShowFilterModal} filterValue={filterValue!} setFilterValue={setFilterValue!} />}
         </div>
         <div className="main__setting__btn">
           <button

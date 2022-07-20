@@ -3,22 +3,22 @@ import RangeSlider from "../RangeSlider/RangeSlider";
 import "./filterModal.css";
 
 export const FilterModal = ({
-  setShowFilterModal,
-  setFilterValue,
-  filterValue,
-}: IFilterModal) => {
-  const closeFilterModal = (): void => {
-    setShowFilterModal(false);
-  };
+    setShowFilterModal,
+    setFilterValue,
+    filterValue,
+  }: IFilterModal) => {
+    const closeFilterModal = (): void => {
+      setShowFilterModal(false);
+    };
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.stopPropagation();
   };
 
-  const clickFilter = (value: string): void => {
-    setFilterValue(value);
-    console.log(value)
-  };
+  // const clickFilter = (value: string): void => {
+  //   setFilterValue(value);
+  //   console.log(value)
+  // };
 
   return (
     <div
@@ -81,6 +81,39 @@ export const FilterModal = ({
               Popular products <input type="checkbox" name="popular_product" id="popular_product" />
             </label>
           </div>
+          {/* <label>
+            <input
+              type="radio"
+              defaultChecked={filterValue === "default" ? true : false}
+              onClick={() => {
+                clickFilter("default");
+              }}
+              name="filter"
+            />
+            По умолчанию
+          </label>
+          <label>
+            <input
+              type="radio"
+              defaultChecked={filterValue === "abs" ? true : false}
+              onClick={() => {
+                clickFilter("abs");
+              }}
+              name="filter"
+            />
+            По Возрастанию
+          </label>
+          <label>
+            <input
+              type="radio"
+              defaultChecked={filterValue === "desc" ? true : false}
+              onClick={() => {
+                clickFilter("desc");
+              }}
+              name="filter"
+            />
+            По Убыванию
+          </label> */}
         </div>
         <div className="filter__buttons">
           <div className="filter__buttons_reset">
