@@ -39,13 +39,11 @@ export const FilterModal = ({
         <div className="filter__range__items">
           <div className="filter__range__item">
             <label htmlFor="range_price">Price range</label>
-            <div>
-            <RangeSlider valueRange={1000}/>
-            </div>
+            <RangeSlider valueRange={1000} markRange={'$'}/>
           </div>
           <div className="filter__range__item">
             <label htmlFor="range_count">Count range</label>
-            <RangeSlider valueRange={700}/>
+            <RangeSlider valueRange={700} markRange={'pieces'}/>
           </div>
         </div>
         <div className="filter__value">
