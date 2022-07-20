@@ -84,6 +84,9 @@ export const Catalog = function () {
         const count = rating!.count;
         return filterValue.countRange[0] <= count && filterValue.countRange[1] > count
       })
+      .filter(({ rating }) => {
+        return filterValue.checkPopular ? rating!.rate > 4 : true;
+      })
 
     localStorage.setItem("filterValue", JSON.stringify(filterValue));
     setFilterData(filterArr)

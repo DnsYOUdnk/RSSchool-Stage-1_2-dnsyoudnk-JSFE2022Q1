@@ -23,13 +23,15 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
     }
   };
 
+  const clickPopularFilter = (event: React.MouseEvent<HTMLInputElement>): void => {
+    if(filterValue) {
+      filterValue.checkPopular = !filterValue.checkPopular;
+      setFilterValue!({...filterValue});
+    }
+  };
+
   return (
-    <div
-      className="filter__modal"
-      onClick={() => {
-        closeFilterModal();
-      }}
-    >
+    <div className="filter__modal" onClick={() => { closeFilterModal(); }}>
       <div className="filter__modal__body" onClick={(e) => handleClick(e)}>
         <h3 className="filter__modal__title">Sorting panel</h3>
         <div className="filter__sort">
@@ -81,42 +83,9 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
           </div>
           <div className="filter__value__popular">
             <label>
-              Popular products <input type="checkbox" name="popular_product" id="popular_product" />
+              Popular products <input type="checkbox" name="popular_product" defaultChecked={filterValue!.checkPopular} id="popular_product" onClick={(e) => clickPopularFilter(e)}/>
             </label>
           </div>
-          {/* <label>
-            <input
-              type="radio"
-              defaultChecked={filterValue === "default" ? true : false}
-              onClick={() => {
-                clickFilter("default");
-              }}
-              name="filter"
-            />
-            По умолчанию
-          </label>
-          <label>
-            <input
-              type="radio"
-              defaultChecked={filterValue === "abs" ? true : false}
-              onClick={() => {
-                clickFilter("abs");
-              }}
-              name="filter"
-            />
-            По Возрастанию
-          </label>
-          <label>
-            <input
-              type="radio"
-              defaultChecked={filterValue === "desc" ? true : false}
-              onClick={() => {
-                clickFilter("desc");
-              }}
-              name="filter"
-            />
-            По Убыванию
-          </label> */}
         </div>
         <div className="filter__buttons">
           <div className="filter__buttons_reset">
