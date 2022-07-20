@@ -1,11 +1,20 @@
 import Slider from '@mui/material/Slider';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { Context } from '../../StoreContext';
 
-export default function RangeSlider({valueRange, markRange}:{valueRange: number, markRange: string}) {
-  const [value, setValue] = useState<number[]>([0,valueRange]);
+export default function RangeSlider({maxValue, valueRange, markRange}:{maxValue: number, valueRange: number[], markRange: string}) {
+
+  const [value, setValue] = useState<number[]>(valueRange);
+  const { filterValue, setFilterValue } = useContext(Context);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
-    // console.log(event.target.value)
+    if(markRange === '$' && filterValue) {
+      filterValue.priceRange = Array.isArray(newValue) ? newValue : filterValue.priceRange;
+      setFilterValue!({...filterValue})
+    } else if (markRange === 'pc.' && filterValue) {
+      filterValue.countRange = Array.isArray(newValue) ? newValue : filterValue.countRange;
+      setFilterValue!({...filterValue})
+    }
     setValue(newValue as number[]);
   };
 
@@ -15,7 +24,7 @@ export default function RangeSlider({valueRange, markRange}:{valueRange: number,
         {value[0] + ' ' + markRange}
       </div>
       <Slider
-        max={valueRange}
+        max={maxValue}
         value={value}
         onChange={handleChange}
         valueLabelDisplay="auto"

@@ -53,7 +53,6 @@ export const Catalog = function () {
   
   useEffect(() => {
     if(!filterValue) return;
-
     let sortData = data;
 
     if(filterValue.sort === 'Min'){
@@ -74,9 +73,16 @@ export const Catalog = function () {
       })
     }
     setData(sortData)
-    
-    const filterArr = data.filter(({ title }) => {
+
+    let filterArr = data.filter(({ title }) => {
        return  title.toLowerCase().includes(searchValue!.toLowerCase())
+      })
+      .filter(({ price }) => {
+        return  filterValue.priceRange[0] <= price && filterValue.priceRange[1] > price
+       })
+      .filter(({ rating }) => {
+        const count = rating!.count;
+        return filterValue.countRange[0] <= count && filterValue.countRange[1] > count
       })
 
     localStorage.setItem("filterValue", JSON.stringify(filterValue));

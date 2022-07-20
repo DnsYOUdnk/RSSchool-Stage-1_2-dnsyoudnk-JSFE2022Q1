@@ -44,11 +44,11 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
         <div className="filter__range__items">
           <div className="filter__range__item">
             <span>Price range:</span>
-            <RangeSlider valueRange={1000} markRange={'$'}/>
+            <RangeSlider maxValue={1000} valueRange={filterValue ? filterValue.priceRange : [0, 1000]} markRange={'$'}/>
           </div>
           <div className="filter__range__item">
             <span>Count range:</span>
-            <RangeSlider valueRange={700} markRange={'pc.'}/>
+            <RangeSlider maxValue={700} valueRange={filterValue ? filterValue.countRange : [0, 700]} markRange={'pc.'}/>
           </div>
         </div>
         <div className="filter__value">
