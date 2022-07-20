@@ -1,3 +1,4 @@
+import { defaultFilterValue } from "../fdefaultFilterData";
 import { IProduct, setCartState } from "../types";
 
 export const getCartData = (): IProduct[] => {
@@ -22,19 +23,6 @@ export const addToCart = (product: IProduct, cart:IProduct[], setCart:setCartSta
 }
 
 export const getFiltersValue = () => {
-  const defaultFilterValue = {
-    sort: "A-Z",
-    priceRange: [0, 1000],
-    countRange: [0, 700],
-    checkPopular: false,
-    checkBasket: false,
-    categories: [
-      {id: 1,name: "Men's clothing", checked: false}, 
-      {id: 2,name: "Women's clothing", checked: false}, 
-      {id: 3,name: "Jewelery", checked: false}, 
-      {id: 4,name: "Electronics", checked: false}
-    ]
-  }
   const filterValue = localStorage.getItem("filterValue");
   return filterValue && typeof filterValue === "string"
     ? JSON.parse(filterValue)

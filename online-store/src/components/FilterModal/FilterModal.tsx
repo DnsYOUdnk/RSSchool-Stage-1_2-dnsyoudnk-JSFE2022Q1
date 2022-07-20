@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { defaultFilterValue } from "../../fdefaultFilterData";
 import { Context } from "../../StoreContext";
 import { IFilterModal } from "../../types";
 import { FilterChek } from "../FilterCheck/FilterCheck";
@@ -37,6 +38,18 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
       setFilterValue!({...filterValue});
     }
   };
+
+  const resetFilter = ():void => {
+    setFilterValue!({...defaultFilterValue});
+    setShowFilterModal(false);
+  }
+
+  const demolitionFilter = (): void => {
+    const newData = defaultFilterValue;
+    localStorage.clear();
+    setFilterValue!({...newData});
+    window.location.reload();
+  }
 
   return (
     <div className="filter__modal" onClick={() => { closeFilterModal(); }}>
@@ -82,10 +95,10 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
         </div>
         <div className="filter__buttons">
           <div className="filter__buttons_reset">
-            <button className="btn__res">Reset filters</button>
+            <button className="btn__res" onClick={() => resetFilter()}>Reset filters</button>
           </div>
           <div className="filter__buttons_reset">
-            <button className="btn__res btn__res-all">Reset all</button>
+            <button className="btn__res btn__res-all" onClick={() => demolitionFilter()}>Reset all</button>
           </div>
         </div>
       </div>
