@@ -65,7 +65,10 @@ export const Catalog = function () {
       })
       setData(sortData)
     } else if (filterValue === 'default'){
-      setData([...defaultData])
+      const sortData = data.sort((a,b)=>{
+        return a.id - b.id
+      })
+      setData(sortData)
     }
     const filterArr = data.filter(({ title }) => {
        return  title.toLowerCase().includes(searchValue!.toLowerCase())
