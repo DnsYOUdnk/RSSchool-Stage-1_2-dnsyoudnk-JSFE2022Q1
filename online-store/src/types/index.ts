@@ -8,6 +8,7 @@ export interface IProduct {
   price: number;
   rating?: { rate: number; count: number };
   title: string;
+  count?: number;
 }
 
 export interface IContext {
@@ -28,6 +29,7 @@ export interface ICartState {
 }
 
 export type funcAddToCart =  (product: IProduct, cart:IProduct[], setCart:setCartState, findIndex: number) => void;
+export type removeFromCart =  (cart:IProduct[], setCart:setCartState, findIndex: number) => void;
 
 export interface IFilterModal {
   setShowFilterModal: Dispatch<SetStateAction<boolean>>;

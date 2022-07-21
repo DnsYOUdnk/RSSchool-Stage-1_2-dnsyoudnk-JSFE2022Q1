@@ -1,6 +1,7 @@
 import { FC, useContext } from "react";
 import { Context } from "../../StoreContext";
 import { IProduct } from "../../types";
+import { removeFromCart } from "../../utilities";
 import star from "./../../assets/svg/star.svg";
 
 interface ICatalogItem {
@@ -34,7 +35,14 @@ export const CatalogItem: FC<ICatalogItem> = function ({product}) {
           <div className="catalog__caption__count">Available in stock: {rating ? rating.count : 0 }</div>
         </div>
         <div className="catalog__caption__price">{price} $</div>
-        <button id={String(id)} onClick={()=>{addToCart!(product, cart!, setCart!, findIndex)}} className="catalog__caption__btn" title="Add to cart">{findIndex !== -1 ? '-' : '+'}</button>
+        {findIndex !== -1 ? 
+          <button 
+            id={String(id)+'del'} 
+            onClick={()=>{removeFromCart!(cart!, setCart!, findIndex)}} 
+            className="catalog__caption__btn catalog__caption__btn-del" 
+            title="Remove from cart">-</button> 
+          : ""}
+        <button id={String(id)} onClick={()=>{addToCart!(product, cart!, setCart!, findIndex)}} className="catalog__caption__btn" title="Add to cart">+</button>
       </div>
     </li>
   );

@@ -13,7 +13,7 @@ export const Header = function() {
     if(cart.length === 0) {
       return ''
     } else {
-      return cart.length
+      return cart.reduce((sum, {count}) => sum + count!, 0)
     }
   }
 
