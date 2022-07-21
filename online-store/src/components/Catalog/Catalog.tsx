@@ -72,9 +72,20 @@ export const Catalog = function () {
     }
     setData(sortData)
 
-    const arrCategories = filterValue.categories.map(({name, checked}) => {
-      return checked ? name.toLowerCase() : '';
-    }).filter((el) => el.length > 0);
+    let arrCategories: string[] = ["men's clothing", "women's clothing", "jewelery", "electronics"]
+    arrCategories = arrCategories.filter((value: string):boolean => {
+      if(value === "men's clothing") {
+        return filterValue.categoryMenclo
+      } else if (value === "women's clothing") {
+        return filterValue.categoryWomenclo
+      } else if (value === "jewelery") {
+        return filterValue.categoryJuw
+      } else if (value === "electronics") {
+        return filterValue.categoryElec
+      } else {
+        return false
+      }
+    })
 
     let filterArr = data.filter(({ title }) => {
        return  title.split(' ').slice(0,3).join(' ').toLowerCase().includes(searchValue!.toLowerCase())

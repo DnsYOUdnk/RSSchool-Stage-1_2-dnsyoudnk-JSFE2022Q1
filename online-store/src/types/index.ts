@@ -40,17 +40,8 @@ export interface IFilterValue {
   countRange: number[];
   checkPopular: boolean;
   checkBasket: boolean;
-  categories: Categories[];
-}
-
-export type Categories = {
-  id: number;
-  name: string;
-  checked: boolean;
-}
-
-export interface IFilterChek {
-  id: number;
-  name: string;
-  checked: boolean;
+  categoryMenclo: boolean;
+  categoryWomenclo: boolean;
+  categoryJuw: boolean;
+  categoryElec: boolean;
 }
