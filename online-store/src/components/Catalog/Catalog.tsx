@@ -15,9 +15,9 @@ export const Catalog = function () {
   const [data, setData] = useState<IProduct[]>([]);
   const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
   const [filterData, setFilterData] = useState<IProduct[]>([]);
+
   const handlePrevNext = (direction: string) => {
-    const li =
-      null !== ul.current ? ([...ul.current.children] as HTMLLIElement[]) : [];
+    const li = null !== ul.current ? ([...ul.current.children] as HTMLLIElement[]) : [];
     const liFirst: HTMLLIElement = li[0];
     const liFirstWidth: number = liFirst.offsetWidth;
     const liFirstMR: number = parseInt(
