@@ -40,5 +40,5 @@ export const getFiltersValue = () => {
   const filterValue = localStorage.getItem("filterValue");
   return filterValue && typeof filterValue === "string"
     ? JSON.parse(filterValue)
-    : defaultFilterValue;
+    : {...defaultFilterValue};
 }

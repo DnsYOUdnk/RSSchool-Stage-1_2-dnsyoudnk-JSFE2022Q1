@@ -40,7 +40,12 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
   };
 
   const resetFilter = ():void => {
-    setFilterValue!({...defaultFilterValue});
+    if(filterValue) {
+      defaultFilterValue.sort = filterValue.sort
+      console.log(defaultFilterValue)
+      localStorage.setItem("filterValue", JSON.stringify(defaultFilterValue));
+      setFilterValue!({...defaultFilterValue});
+    }
     setShowFilterModal(false);
   }
 
