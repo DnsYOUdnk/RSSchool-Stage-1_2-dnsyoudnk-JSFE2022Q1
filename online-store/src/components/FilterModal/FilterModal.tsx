@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { defaultFilterValue } from "../../fdefaultFilterData";
+import { defaultFilterValue } from "../../defaultFilterData";
 import { Context } from "../../StoreContext";
 import { IFilterModal } from "../../types";
 import { FilterChek } from "../FilterCheck/FilterCheck";

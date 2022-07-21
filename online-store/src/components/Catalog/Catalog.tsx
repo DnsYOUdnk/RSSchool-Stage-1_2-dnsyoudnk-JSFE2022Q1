@@ -14,7 +14,6 @@ export const Catalog = function () {
 
   const [data, setData] = useState<IProduct[]>([]);
   const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
-  // const [defaultData, setDefaultData] = useState<IProduct[]>([]);
   const [filterData, setFilterData] = useState<IProduct[]>([]);
   const handlePrevNext = (direction: string) => {
     const li =
@@ -46,7 +45,6 @@ export const Catalog = function () {
       .then((res) => res.json())
       .then((json: IProduct[]): void => {
         setData([...json]);
-        // setDefaultData([...json]);
         setFilterData([...json]);
       });
   }, []);
@@ -107,7 +105,7 @@ export const Catalog = function () {
     localStorage.setItem("filterValue", JSON.stringify(filterValue));
     setFilterData(filterArr)
 
-  }, [ filterValue, data, searchValue])
+  }, [ filterValue, cart, data, searchValue])
 
   const openFilterModal = () => {
     setShowFilterModal(true)

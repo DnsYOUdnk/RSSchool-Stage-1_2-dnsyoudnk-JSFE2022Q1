@@ -1,4 +1,4 @@
-import { defaultFilterValue } from "../fdefaultFilterData";
+import { defaultFilterValue } from "../defaultFilterData";
 import { IProduct, setCartState } from "../types";
 
 export const getCartData = (): IProduct[] => {

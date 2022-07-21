@@ -1,0 +1,186 @@
+@media screen and (max-width: 1300px) {
+  .App {
+    height: 100%;
+    margin: 10px;
+    padding: 20px;
+  }
+
+  .sort_element {
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .header__logo a {
+    font-size: 28px;
+  }
+
+  #header__widget__value {
+    padding: 16px 16px 16px 60px;
+    margin-right: 50px;
+  }
+
+  .main__nav {
+    margin-bottom: 16px;
+  }
+
+  .filter__sort {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .sort_element {
+    text-align: center;
+  }
+
+  .catalog__item {
+    width: 280px;
+    height: 400px;
+    justify-content: start;
+  }
+
+  .catalog__item__img img {
+    height: 146px;
+    max-width: 260px;
+    margin: 0;
+  }
+
+  .catalog__caption__name {
+    font-size: 28px;
+    height: 60px;
+  }
+
+  .catalog__caption__price {
+    margin: 14px 0;
+  }
+
+  .catalog__not_found {
+    gap: 0px;
+  }
+
+  .catalog__not_found h3 {
+    font-size: 28px;
+  }
+
+  .catalog__not_found img {
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #root {
+    background-color: #c0ded9;
+  }
+
+  .main__filter__name {
+    font-size: 48px;
+  }
+
+  .main__setting__btn {
+    display: none;
+  }
+
+  .main__filter {
+    margin-right: 0;
+  }
+
+  .catalog__items {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .catalog__item:not(:last-child) {
+    margin-right: 0px;
+  }
+
+  .catalog__not_found {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .header {
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .main__nav {
+    justify-content: center;
+  }
+
+  #header__widget__value {
+    margin-right: 20px;
+  }
+
+  .filter__modal__body {
+    padding: 10px;
+    width: 90vw;
+    flex-direction: column;
+  }
+
+  .sort_element {
+    padding: 10px 8px;
+    text-align: start;
+    font-size: 13px;
+  }
+
+  .filter__sort span {
+    margin-right: 0px;
+  }
+
+  .filter__range__item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .filter__value {
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .main__filter__name {
+    font-size: 36px;
+  }
+
+  .main__nav {
+    margin-bottom: 36px;
+  }
+
+  .filter__value {
+    margin: 10px 0;
+  }
+
+  .filter__value__categories {
+    width: 100%;
+  }
+
+  .filter__value__item label, .filter__value__popular label {
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filter__value__popular {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .catalog__not_found h3 {
+    font-size: 20px;
+  }
+
+  .catalog__not_found img {
+    height: 30vh;
+  }
+
+  .filter__modal__body {
+    width: 80vw;
+  }
+}
