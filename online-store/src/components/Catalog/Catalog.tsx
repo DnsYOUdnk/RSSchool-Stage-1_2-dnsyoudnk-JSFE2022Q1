@@ -77,7 +77,7 @@ export const Catalog = function () {
     }).filter((el) => el.length > 0);
 
     let filterArr = data.filter(({ title }) => {
-       return  title.toLowerCase().includes(searchValue!.toLowerCase())
+       return  title.split(' ').slice(0,3).join(' ').toLowerCase().includes(searchValue!.toLowerCase())
       })
       .filter(({ price }) => {
         return  filterValue.priceRange[0] <= price && filterValue.priceRange[1] > price
