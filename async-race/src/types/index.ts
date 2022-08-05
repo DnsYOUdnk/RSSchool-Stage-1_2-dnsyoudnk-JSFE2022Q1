@@ -24,7 +24,7 @@ export interface IWinners {
 }
 
 export interface IWinner {
-  id: number,
+  id?: number,
   wins: number,
   time: number,
 }

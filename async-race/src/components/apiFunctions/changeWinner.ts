@@ -21,3 +21,14 @@ export const createWinner = async (body: IWinner): Promise<IWinner> => {
   });
   return res.json();
 };
+
+export const updateWinner = async (id: number, body: IWinner): Promise<IWinner> => {
+  const res = await fetch(`${winners}/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  return res.json();
+};

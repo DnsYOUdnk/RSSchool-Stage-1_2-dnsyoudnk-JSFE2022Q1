@@ -1,4 +1,4 @@
-import { ParamWinners, IWinners, IWinner } from '../../types';
+import { ParamWinners, IWinners } from '../../types';
 import { winners } from './api';
 import { getCar } from './getCar';
 
