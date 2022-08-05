@@ -32,3 +32,21 @@ export const updateWinner = async (id: number, body: IWinner): Promise<IWinner> 
   });
   return res.json();
 };
+
+export const savingWinner = async ({ id, time }: { id: number, time: number }): Promise<void> => {
+  const statusWin = await (await fetch(`${winners}/${id}}`)).status;
+  if (statusWin === 404) {
+    await createWinner({
+      id,
+      wins: 1,
+      time,
+    });
+  } else {
+    const winner = await getWinner(id);
+    await updateWinner(id, {
+      id,
+      wins: winner.wins + 1,
+      time: time < winner.time ? time : winner.time,
+    });
+  }
+};
