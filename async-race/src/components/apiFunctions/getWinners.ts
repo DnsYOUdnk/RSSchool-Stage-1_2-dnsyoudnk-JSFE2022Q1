@@ -1,4 +1,4 @@
-import { ParamWinners, IWinners } from '../../types';
+import { ParamWinners, IWinners, IWinner } from '../../types';
 import { winners } from './api';
 import { getCar } from './getCar';
 
@@ -17,4 +17,9 @@ export const getWinners = async ({
     items,
     count: totalCount,
   };
+};
+
+export const getWinner = async (id: number): Promise<IWinner> => {
+  const res = await fetch(`${winners}/${id}`);
+  return res.json();
 };
