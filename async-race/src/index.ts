@@ -1,2 +1,2 @@
 import './style/style.css';
-import './components/apiFunctions/getWinners';
+import './components/UI/uiBasic';

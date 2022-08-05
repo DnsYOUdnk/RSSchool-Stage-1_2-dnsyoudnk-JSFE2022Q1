@@ -1,7 +1,7 @@
 import { garage } from './api';
-import { Car } from '../../types';
+import { ICar } from '../../types';
 
-export const createCar = async (body: Car): Promise<Car> => {
+export const createCar = async (body: ICar): Promise<ICar> => {
   const res = await fetch(garage, {
     method: 'POST',
     body: JSON.stringify(body),

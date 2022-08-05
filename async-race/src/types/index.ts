@@ -1,4 +1,4 @@
-export interface Car {
+export interface ICar {
   name: string,
   color: string,
   id?: number,
@@ -20,7 +20,7 @@ export interface IWinners {
   id: number,
   wins: number,
   time: number,
-  car: Car,
+  car: ICar,
 }
 
 export interface IWinner {
@@ -31,7 +31,7 @@ export interface IWinner {
 
 export interface IStoreData {
   carsPage: number,
-  cars: Car[],
+  cars: ICar[],
   carsCount: number,
   winnersPage: number,
   winners: IWinners[],
