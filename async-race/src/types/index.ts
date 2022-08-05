@@ -28,3 +28,16 @@ export interface IWinner {
   wins: number,
   time: number,
 }
+
+export interface IStoreData {
+  carsPage: number,
+  cars: Car[],
+  carsCount: number,
+  winnersPage: number,
+  winners: IWinners[],
+  winnersCount: number,
+  animation: null,
+  view: string,
+  sort: string | null,
+  sortOrder: string | null
+}
