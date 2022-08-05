@@ -23,3 +23,8 @@ export const getWinner = async (id: number): Promise<IWinner> => {
   const res = await fetch(`${winners}/${id}`);
   return res.json();
 };
+
+export const deleteWinner = async (id: number): Promise<void> => {
+  const res = await fetch(`${winners}/${id}`, { method: 'DELETE' });
+  return res.json();
+};
