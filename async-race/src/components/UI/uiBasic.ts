@@ -37,3 +37,40 @@ const renderCar = ({ id, name, color }: ICar) => `
     <div class="finish__flag" id="flag-${id}"><img src="../../assets/svg/finish.svg" alt="finish"></div>
   </div>
 `;
+
+const renderGarage = () => `
+  <h1>Garage (${storeData.carsCount})</h1>
+  <h2>Page №${storeData.carsPage}</h2>
+  <ul class="garage__items">
+    ${storeData.cars.map((car) => `
+      <li class="garage__item">${renderCar(car)}</li>
+    `).join('')}
+  </ul>
+`;
+
+const renderWinners = () => `
+  <h1>Winners (${storeData.winnersCount})</h1>
+  <h2>Page №${storeData.winnersPage}</h2>
+  <table class="table__winners" cellspasing="0" border="0" cellpadding="0">
+    <thead>
+      <th>Number</th>
+      <th>Car</th>
+      <th>Name</th>
+      <th class="table__winners-button ${storeData.sort === 'wins' ? storeData.sortOrder : ''}
+      "id="sort-by-wins">Wins</th>
+      <th class="table__winners-button ${storeData.sort === 'time' ? storeData.sortOrder : ''}
+      "id="sort-by-time">Best time(seconds)</th>
+    </thead>
+    <tbody>
+      ${storeData.winners.map((winner, index) => `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${renderCarImage(winner.car.color)}</td>
+          <td>${winner.car.name}</td>
+          <td>${winner.wins}</td>
+          <td>${winner.time}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+`;
