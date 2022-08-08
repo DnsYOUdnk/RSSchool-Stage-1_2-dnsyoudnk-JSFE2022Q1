@@ -8,6 +8,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const devServer = (isDev) => !isDev ? {} : {
   devServer: {
     open: true,
+    hot: true,
     port: 8080,
     contentBase: path.join(__dirname, 'public'),
   },
@@ -25,6 +26,9 @@ module.exports = ({develop}) => ({
     path: path.resolve(__dirname, 'build'),
     filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/[hash][ext]',
+  },
+  experiments: {
+    topLevelAwait: true
   },
   module: {
     rules: [

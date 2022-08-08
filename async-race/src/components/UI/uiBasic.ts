@@ -1,17 +1,17 @@
 import storeData from '../storeData/storeData';
-import { getCars } from '../apiFunctions/getCars';
-import { getCar } from '../apiFunctions/getCar';
-import { deleteCar } from '../apiFunctions/deleteCara';
-import { createCar } from '../apiFunctions/createCar';
-import { updateCar } from '../apiFunctions/updateCar';
-import { startEngine, stopEngine, driveCar } from '../apiFunctions/changeEngineCar';
-import { getWinners } from '../apiFunctions/getWinners';
-import { getWinner, deleteWinner, savingWinner } from '../apiFunctions/changeWinner';
+// import { getCars } from '../apiFunctions/getCars';
+// import { getCar } from '../apiFunctions/getCar';
+// import { deleteCar } from '../apiFunctions/deleteCara';
+// import { createCar } from '../apiFunctions/createCar';
+// import { updateCar } from '../apiFunctions/updateCar';
+// import { startEngine, stopEngine, driveCar } from '../apiFunctions/changeEngineCar';
+// import { getWinners } from '../apiFunctions/getWinners';
+// import { getWinner, deleteWinner, savingWinner } from '../apiFunctions/changeWinner';
 import { ICar } from '../../types';
 import { dataImage } from '../dataImage/dataImage';
 import { getRandomImage } from '../../utils/getRandomImage';
 
-const selectedCar: ICar | null = null;
+// const selectedCar: ICar | null = null;
 
 const renderCarImage = (color: string) => {
   const arrImages = dataImage(color);
@@ -34,7 +34,7 @@ const renderCar = ({ id, name, color }: ICar) => `
         ${renderCarImage(color)}
       </div>
     </div>
-    <div class="finish__flag" id="flag-${id}"><img src="../../assets/svg/finish.svg" alt="finish"></div>
+    <div class="finish__flag" id="flag-${id}"><img src="./finish.svg" alt="finish"></div>
   </div>
 `;
 
@@ -74,3 +74,47 @@ const renderWinners = () => `
     </tbody>
   </table>
 `;
+
+export const render = async (): Promise<void> => {
+  const homepage = `
+    <div class="navigation">
+      <button class="button garage-navigation-button primary" id="garage-navigation">To garage</button>
+      <button class="button winners-navigation-button primary" id="winners-navigation">To winners</button>
+    </div>
+    <div id="garage-view">
+      <div>
+        <form class="form" id="create">
+          <input class="input" id="create-name" name="name" type="text">
+          <input class="color" id="create-color" name="color" type="color" value="#ffffff">
+          <button class="button" type="submit">Create</button>
+        </form>
+        <form class="form" id="update">
+          <input class="input" id="update-name" name="name" type="text" disabled>
+          <input class="color" id="update-color" name="color" type="color" value="#ffffff" disabled>
+          <button class="button" id="update-submit" type="submit">Update</button>
+        </form>
+      </div>
+      <div class="race-controls">
+        <button class="button race-button primary" id="race">Race</button>
+        <button class="button reset-button primary" id="reset">Reset</button>
+        <button class="button random-button" id="randomize">Generate cars</button>
+      </div>
+      <div id="garage">
+        ${renderGarage()}
+      </div>
+      <div>
+        <p class="message" id="message"></p>
+      </div>
+    </div>
+    <div id="winners-view" style="display: none">
+      ${renderWinners()}
+    </div>
+    <div class="pagination">
+      <button class="button primary prev-button" disabled id="prev">Prev</button>
+      <button class="button primary next-button" disabled id="next">Next</button>
+    </div>
+  `;
+  const root = document.createElement('div');
+  root.innerHTML = homepage;
+  document.body.appendChild(root);
+};

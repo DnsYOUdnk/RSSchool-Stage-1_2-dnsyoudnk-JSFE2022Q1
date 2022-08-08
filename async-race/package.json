@@ -3,7 +3,7 @@
   "description": "async-race-task",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack serve --env development",
+    "dev": "webpack serve --env development --open",
     "lint": "eslint src"
   },
   "author": "dnsyoudnk",

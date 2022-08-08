@@ -1,2 +1,4 @@
 import './style/style.css';
-import './components/UI/uiBasic';
+import { render } from './components/UI/uiBasic';
+
+render();
