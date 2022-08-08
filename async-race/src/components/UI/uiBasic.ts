@@ -115,6 +115,7 @@ export const render = async (): Promise<void> => {
     </div>
   `;
   const root = document.createElement('div');
+  root.classList.add('homepage');
   root.innerHTML = homepage;
   document.body.appendChild(root);
 };

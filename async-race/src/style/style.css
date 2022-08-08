@@ -2,3 +2,25 @@
     margin: 0;
     padding: 0;
 }
+
+.homepage {
+    max-width: 1800px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.car__item svg {
+    width: 16vw;
+    height: 8vh;
+}
+
+.finish__flag img {
+    width: 8vw;
+    height: 6vh;
+}
+
+.track {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
