@@ -163,19 +163,17 @@ export const updateWinners = async (): Promise<void> => {
 };
 
 const startDrive = async (id: number): Promise<{ success: boolean, id: number, time: number }> => {
-  const startButton = document.getElementById(`start-engine-car-${id}`);
+  const startButton = document.getElementById(`start_engine-car-${id}`);
   (<HTMLButtonElement>startButton).disabled = true;
-  (<HTMLButtonElement>startButton).classList.toggle('enabling', true);
 
   const { velocity, distance } = await startEngine(id);
   const time = Math.round(distance / velocity);
 
-  (<HTMLButtonElement>startButton).classList.toggle('enabling', false);
-  (<HTMLButtonElement>document.getElementById(`stop-engine-car-${id}`)).disabled = false;
+  (<HTMLButtonElement>document.getElementById(`stop_engine-car-${id}`)).disabled = false;
 
   const car = document.getElementById(`car-${id}`);
   const flag = document.getElementById(`flag-${id}`);
-  const htmlDistance = Math.floor(getDistance((<HTMLButtonElement>car), (<HTMLButtonElement>flag))) + 50;
+  const htmlDistance = Math.floor(getDistance((<HTMLButtonElement>car), (<HTMLButtonElement>flag)));
 
   storeData.animation[id] = animation((<HTMLButtonElement>car), htmlDistance, time);
 
@@ -186,12 +184,10 @@ const startDrive = async (id: number): Promise<{ success: boolean, id: number, t
 };
 
 const stopDriving = async (id: number) => {
-  const stopButton = document.getElementById(`stop-engine-car-${id}`);
+  const stopButton = document.getElementById(`stop_engine-car-${id}`);
   (<HTMLButtonElement>stopButton).disabled = true;
-  (<HTMLButtonElement>stopButton).classList.toggle('enabling', true);
   await stopEngine(id);
-  (<HTMLButtonElement>stopButton).classList.toggle('enabling', false);
-  (<HTMLButtonElement>document.getElementById(`start-engine-car-${id}`)).disabled = false;
+  (<HTMLButtonElement>document.getElementById(`start_engine-car-${id}`)).disabled = false;
 
   const car = document.getElementById(`car-${id}`);
   if (car) car.style.transform = 'translateX(0)';
@@ -208,33 +204,33 @@ const setSortOrder = async (sort: string) => {
 
 export const listen = (): void => {
   document.body.addEventListener('click', async (event) => {
-    if ((<HTMLButtonElement>event.target).classList.contains('start-engine-button')) {
-      const id = +(<HTMLButtonElement>event.target).id.split('start-engine-car-')[1];
+    if ((<HTMLButtonElement>event.target).classList.contains('start__engine-button')) {
+      const id = +(<HTMLButtonElement>event.target).id.split('start_engine-car-')[1];
       startDrive(id);
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('stop-engine-button')) {
-      const id = +(<HTMLButtonElement>event.target).id.split('stop-engine-car-')[1];
+    if ((<HTMLButtonElement>event.target).classList.contains('stop__engine-button')) {
+      const id = +(<HTMLButtonElement>event.target).id.split('stop_engine-car-')[1];
       stopDriving(id);
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('select-button')) {
-      selectedCar = await getCar(+(<HTMLButtonElement>event.target).id.split('select-car-')[1]);
+    if ((<HTMLButtonElement>event.target).classList.contains('button-select')) {
+      selectedCar = await getCar(+(<HTMLButtonElement>event.target).id.split('select_car-')[1]);
       (<HTMLInputElement>document.getElementById('update-name')).value = selectedCar.name;
       (<HTMLInputElement>document.getElementById('update-color')).value = selectedCar.color;
       (<HTMLInputElement>document.getElementById('update-name')).disabled = false;
       (<HTMLInputElement>document.getElementById('update-color')).disabled = false;
       (<HTMLButtonElement>document.getElementById('update-submit')).disabled = false;
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('remove-button')) {
-      const id = +(<HTMLButtonElement>event.target).id.split('remove-car-')[1];
+    if ((<HTMLButtonElement>event.target).classList.contains('button-remove')) {
+      const id = +(<HTMLButtonElement>event.target).id.split('remove_car-')[1];
       await deleteCar(id);
       await deleteWinner(id);
       await updateGarage();
       (<HTMLElement>document.getElementById('garage')).innerHTML = renderGarage();
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('generator-button')) {
+    if ((<HTMLButtonElement>event.target).classList.contains('random-button')) {
       (<HTMLButtonElement>event.target).disabled = true;
       const cars = generateRandomCars();
-      await Promise.all(cars.map(async (c) => createCar(c)));
+      await Promise.all(cars.map(async (el) => createCar(el)));
       await updateGarage();
       (<HTMLElement>document.getElementById('garage')).innerHTML = renderGarage();
       (<HTMLButtonElement>event.target).disabled = false;

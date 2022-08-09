@@ -45,7 +45,7 @@ export function animation(car: HTMLElement, distance: number, animationTime: num
 const models = ['Lada', 'UAZ', 'Chevrolet', 'Toyota', 'Renault', 'Fiat', 'Kia', 'Hyundai', 'VW'];
 const names = ['Vesta', 'Patriot', 'Camaro', 'Corolla', 'Megan', 'Noname', 'Spectra', 'Solaris', 'Polo'];
 
-const getRandomName = () => {
+export const getRandomName = () => {
   const model = models[Math.floor(Math.random() * models.length)];
   const name = names[Math.floor(Math.random() * names.length)];
   return `${model} ${name}`;
