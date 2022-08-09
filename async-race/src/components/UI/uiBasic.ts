@@ -82,7 +82,7 @@ export const render = async (): Promise<void> => {
       <button class="button winners-navigation-button primary" id="winners-navigation">To winners</button>
     </div>
     <div id="garage-view">
-      <div>
+      <div class="form__data">
         <form class="form" id="create">
           <input class="input" id="create-name" name="name" type="text">
           <input class="color" id="create-color" name="color" type="color" value="#ffffff">
@@ -99,7 +99,7 @@ export const render = async (): Promise<void> => {
         <button class="button reset-button primary" id="reset">Reset</button>
         <button class="button random-button" id="randomize">Generate cars</button>
       </div>
-      <div id="garage">
+      <div class="garage__components" id="garage">
         ${renderGarage()}
       </div>
       <div>
