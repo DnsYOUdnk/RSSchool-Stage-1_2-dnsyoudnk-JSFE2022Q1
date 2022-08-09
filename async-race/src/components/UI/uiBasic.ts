@@ -15,9 +15,9 @@ import {
 
 let selectedCar: ICar | null = null;
 
-const renderCarImage = (color: string) => {
+const renderCarImage = (color: string, id: number) => {
   const arrImages = dataImage(color);
-  return getRandomImage(arrImages);
+  return getRandomImage(arrImages, id);
 };
 
 const renderCar = ({ id, name, color }: ICar) => `
@@ -33,7 +33,7 @@ const renderCar = ({ id, name, color }: ICar) => `
         <button class="icon stop__engine-button" id="stop_engine-car-${id}" disabled>Stop</button>
       </div>
       <div class="car__item" id="car-${id}">
-        ${renderCarImage(color)}
+        ${renderCarImage(color, id as number)}
       </div>
     </div>
     <div class="finish__flag" id="flag-${id}"><img src="./finish.svg" alt="finish"></div>
@@ -67,7 +67,7 @@ const renderWinners = () => `
       ${storeData.winners.map((winner, index) => `
         <tr>
           <td>${index + 1}</td>
-          <td>${renderCarImage(winner.car.color)}</td>
+          <td>${renderCarImage(winner.car.color, winner.car.id as number)}</td>
           <td>${winner.car.name}</td>
           <td>${winner.wins}</td>
           <td>${winner.time}</td>

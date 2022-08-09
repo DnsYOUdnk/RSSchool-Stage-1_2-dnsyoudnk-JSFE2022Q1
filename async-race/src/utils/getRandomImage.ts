@@ -1,8 +1,8 @@
 import storeData from '../components/storeData/storeData';
 
-export const getRandomImage = (arr: string[]) => {
-  const index = Math.floor(Math.random() * 7);
-  return arr.find((_, id) => id === index);
+export const getRandomImage = (arr: string[], id: number) => {
+  const index = id % 7;
+  return arr[index];
 };
 
 function getPositionAtCenter(element: HTMLElement) {
