@@ -36,8 +36,8 @@ export interface IStoreData {
   winnersPage: number,
   winners: IWinners[],
   winnersCount: number,
-  animation: null,
+  animation: Record<string, Record<string, number>>,
   view: string,
-  sort: string | null,
-  sortOrder: string | null
+  sort: string,
+  sortOrder: string
 }

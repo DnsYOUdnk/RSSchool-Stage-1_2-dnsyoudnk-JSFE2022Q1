@@ -1,4 +1,6 @@
 import './style/style.css';
-import { render } from './components/UI/uiBasic';
+import { listen, render, updateGarage } from './components/UI/uiBasic';
 
 render();
+await updateGarage();
+listen();

@@ -17,8 +17,8 @@ export default ({
   winnersPage: 1,
   winners,
   winnersCount,
-  animation: null,
+  animation: {},
   view: 'garage',
-  sort: null,
-  sortOrder: null,
+  sort: '',
+  sortOrder: '',
 } as IStoreData);
