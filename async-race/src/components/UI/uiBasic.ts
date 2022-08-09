@@ -104,8 +104,8 @@ export const render = async (): Promise<void> => {
       <div class="garage__components" id="garage">
         ${renderGarage()}
       </div>
-      <div>
-        <p class="message" id="message"></p>
+      <div class="message">
+        <p id="message_alert"></p>
       </div>
     </div>
     <div id="winners-view" style="display: none">
@@ -130,7 +130,7 @@ export const updateGarage = async (): Promise<void> => {
   if (storeData.carsPage * 7 < storeData.carsCount) {
     (<HTMLButtonElement>document.getElementById('next')).disabled = false;
   } else {
-    (<HTMLButtonElement>document.getElementById('next')).disabled = false;
+    (<HTMLButtonElement>document.getElementById('next')).disabled = true;
   }
   if (storeData.carsPage > 1) {
     (<HTMLButtonElement>document.getElementById('prev')).disabled = false;
@@ -149,7 +149,6 @@ export const updateWinners = async (): Promise<void> => {
 
   storeData.winners = items;
   storeData.winnersCount = count;
-
   if (storeData.winnersPage * 10 < storeData.winnersCount) {
     (<HTMLButtonElement>document.getElementById('next')).disabled = false;
   } else {
@@ -239,17 +238,18 @@ export const listen = (): void => {
     if ((<HTMLButtonElement>event.target).classList.contains('race-button')) {
       (<HTMLButtonElement>event.target).disabled = true;
       const winner = await race(startDrive);
-      await savingWinner(winner as { name: string, color: string, id: number, time: number });
-      const message = document.getElementById('message');
-      (<HTMLElement>message).innerHTML = `${winner.name} won (${winner.time}s)!`;
-      (<HTMLElement>message).classList.toggle('visible', true);
+      await savingWinner(winner as { id: number, time: number });
+      const messageDiv = document.querySelector('.message');
+      const message = document.getElementById('message_alert');
+      (<HTMLElement>message).innerHTML = `${winner.name} winner (${winner.time}s)!`;
+      (<HTMLElement>messageDiv).classList.add('visible');
       (<HTMLButtonElement>document.getElementById('reset')).disabled = false;
     }
     if ((<HTMLButtonElement>event.target).classList.contains('reset-button')) {
       (<HTMLButtonElement>event.target).disabled = true;
       storeData.cars.map(({ id }) => stopDriving(id as number));
-      const message = document.getElementById('message');
-      message?.classList.toggle('visible', false);
+      const messageDiv = document.querySelector('.message');
+      messageDiv?.classList.remove('visible');
       (<HTMLButtonElement>document.getElementById('race')).disabled = false;
     }
     if ((<HTMLButtonElement>event.target).classList.contains('prev-button')) {
