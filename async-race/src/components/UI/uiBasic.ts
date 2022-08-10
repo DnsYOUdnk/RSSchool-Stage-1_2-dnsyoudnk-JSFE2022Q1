@@ -7,7 +7,7 @@ import { updateCar } from '../apiFunctions/updateCar';
 import { startEngine, stopEngine, driveCar } from '../apiFunctions/changeEngineCar';
 import { getWinners } from '../apiFunctions/getWinners';
 import { deleteWinner, savingWinner } from '../apiFunctions/changeWinner';
-import { ICar } from '../../types';
+import { ICar, IWin } from '../../types';
 import { dataImage } from '../dataImage/dataImage';
 import {
   animation, generateRandomCars, getDistance, getRandomImage, race,
@@ -198,7 +198,7 @@ const setSortOrder = async (sort: string) => {
   storeData.sort = sort;
 
   await updateWinners();
-  (<HTMLButtonElement>document.getElementById('winners-view')).innerHTML = renderWinners();
+  (<HTMLButtonElement>document.getElementById('winners-navigation')).innerHTML = renderWinners();
 };
 
 export const listen = (): void => {
@@ -238,7 +238,7 @@ export const listen = (): void => {
     if ((<HTMLButtonElement>event.target).classList.contains('race-button')) {
       (<HTMLButtonElement>event.target).disabled = true;
       const winner = await race(startDrive);
-      await savingWinner(winner as { id: number, time: number });
+      await savingWinner(winner as IWin);
       const messageDiv = document.querySelector('.message');
       const message = document.getElementById('message_alert');
       (<HTMLElement>message).innerHTML = `${winner.name} winner (${winner.time}s)!`;
@@ -263,7 +263,7 @@ export const listen = (): void => {
         case 'winners': {
           storeData.winnersPage--;
           await updateWinners();
-          (<HTMLElement>document.getElementById('winners-view')).innerHTML = renderWinners();
+          (<HTMLElement>document.getElementById('winners-navigation')).innerHTML = renderWinners();
           break;
         }
         default:
@@ -280,22 +280,22 @@ export const listen = (): void => {
         case 'winners': {
           storeData.winnersPage++;
           await updateWinners();
-          (<HTMLElement>document.getElementById('winners-view')).innerHTML = renderWinners();
+          (<HTMLElement>document.getElementById('winners-navigation')).innerHTML = renderWinners();
           break;
         }
         default:
       }
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('garage-menu-button')) {
-      (<HTMLElement>document.getElementById('garage-view')).style.display = 'block';
-      (<HTMLElement>document.getElementById('winners-view')).style.display = 'none';
+    if ((<HTMLButtonElement>event.target).classList.contains('garage-navigation-button')) {
+      (<HTMLElement>document.getElementById('garage-navigation')).style.display = 'block';
+      (<HTMLElement>document.getElementById('winners-navigation')).style.display = 'none';
       storeData.view = 'garage';
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('winners-menu-button')) {
-      (<HTMLElement>document.getElementById('winners-view')).style.display = 'block';
-      (<HTMLElement>document.getElementById('garage-view')).style.display = 'none';
+    if ((<HTMLButtonElement>event.target).classList.contains('winners-navigation-button')) {
+      (<HTMLElement>document.getElementById('winners-navigation')).style.display = 'block';
+      (<HTMLElement>document.getElementById('garage-navigation')).style.display = 'none';
       await updateWinners();
-      (<HTMLElement>document.getElementById('winners-view')).innerHTML = renderWinners();
+      (<HTMLElement>document.getElementById('winners-navigation')).innerHTML = renderWinners();
       storeData.view = 'winners';
     }
     if ((<HTMLElement>event.target).classList.contains('table-wins')) {

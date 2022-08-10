@@ -1,4 +1,4 @@
-import { IWinner } from '../../types';
+import { IWin, IWinner } from '../../types';
 import { winners } from './api';
 
 export const getWinner = async (id: number): Promise<IWinner> => {
@@ -33,20 +33,21 @@ export const updateWinner = async (id: number, body: IWinner): Promise<IWinner> 
   return res.json();
 };
 
-export const savingWinner = async ({ id, time }: { id: number, time: number }): Promise<void> => {
-  const statusWin = await (await fetch(`${winners}/${id}}`)).status;
+export const savingWinner = async (win: IWin): Promise<void> => {
+  const statusWin = await (await fetch(`${winners}/${win.id}`)).status;
   if (statusWin === 404) {
     await createWinner({
-      id,
+      id: win.id,
       wins: 1,
-      time,
+      time: win.time,
     });
   } else {
-    const winner = await getWinner(id);
-    await updateWinner(id, {
-      id,
+    if (!win.id) return;
+    const winner = await getWinner(win.id);
+    await updateWinner(win.id, {
+      id: win.id,
       wins: winner.wins + 1,
-      time: time < winner.time ? time : winner.time,
+      time: win.time < winner.time ? win.time : winner.time,
     });
   }
 };

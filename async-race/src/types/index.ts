@@ -41,3 +41,10 @@ export interface IStoreData {
   sort: string,
   sortOrder: string
 }
+
+export interface IWin {
+  name?: string,
+  color?: string,
+  id?: number,
+  time: number
+}

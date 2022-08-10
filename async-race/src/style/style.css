@@ -178,6 +178,7 @@ body {
   border-bottom: 1px dotted rgb(0, 0, 0);
 }
 
+tbody td > svg,
 .car__item svg {
   width: 120px;
   height: 80px;
@@ -219,6 +220,32 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.table {
+  margin-bottom: 10rem;
+}
+
+.table td, .table th {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.table th {
+  background: blue;
+  color: aliceblue;
+}
+
+.table-button {
+  cursor: pointer;
+}
+
+.table-button.asc::after {
+  content: '↑';
+}
+
+.table-button.desc:after {
+  content: '↓';
 }
 
 @media screen and (max-width: 600px) {
