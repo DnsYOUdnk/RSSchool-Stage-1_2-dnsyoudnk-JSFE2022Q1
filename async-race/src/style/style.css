@@ -222,8 +222,34 @@ tbody td > svg,
   justify-content: center;
 }
 
-.table {
-  margin-bottom: 10rem;
+.winner__title {
+  font-size: 32px;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.winner__sub_title {
+  font-size: 26px;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.table__wrap {
+  overflow-x: auto;
+}
+
+.table__winners {
+  margin-bottom: 4rem;
+  width: 100%;
+  min-width: 600px;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+}
+
+thead {
+  background-color: #14abed96;
+  height: 40px;
 }
 
 .table td, .table th {
@@ -231,9 +257,9 @@ tbody td > svg,
   padding: 1rem;
 }
 
-.table th {
-  background: blue;
-  color: aliceblue;
+.table__winners tbody tr {
+  background: rgba(215, 215, 215, 0.4);
+  font-weight: 600;
 }
 
 .table-button {
@@ -257,6 +283,11 @@ tbody td > svg,
   .finish__flag img {
     width: 50px;
     height: 50px;
+  }
+
+  tbody td > svg {
+    width: 80px;
+    height: 60px;
   }
   
 }
