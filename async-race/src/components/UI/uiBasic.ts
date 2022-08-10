@@ -159,19 +159,19 @@ export const updateWinners = async (): Promise<void> => {
 };
 
 const startDrive = async (id: number): Promise<{ success: boolean, id: number, time: number }> => {
-  const startButton = document.getElementById(`start_engine-car-${id}`);
-  (<HTMLButtonElement>startButton).disabled = true;
+  const startButton = document.getElementById(`start_engine-car-${id}`) as HTMLButtonElement;
+  startButton.disabled = true;
 
   const { velocity, distance } = await startEngine(id);
   const time = Math.round(distance / velocity);
 
   (<HTMLButtonElement>document.getElementById(`stop_engine-car-${id}`)).disabled = false;
 
-  const car = document.getElementById(`car-${id}`);
-  const flag = document.getElementById(`flag-${id}`);
-  const htmlDistance = Math.floor(getDistance((<HTMLButtonElement>car), (<HTMLButtonElement>flag)));
+  const car = document.getElementById(`car-${id}`) as HTMLDivElement;
+  const flag = document.getElementById(`flag-${id}`) as HTMLDivElement;
+  const htmlDistance = Math.floor(getDistance(car, flag));
 
-  storeData.animation[id] = animation((<HTMLButtonElement>car), htmlDistance, time);
+  storeData.animation[id] = animation((car), htmlDistance, time);
 
   const { success } = await driveCar(id);
   if (!success) window.cancelAnimationFrame(storeData.animation[id].id);
@@ -180,8 +180,7 @@ const startDrive = async (id: number): Promise<{ success: boolean, id: number, t
 };
 
 const stopDriving = async (id: number) => {
-  const stopButton = document.getElementById(`stop_engine-car-${id}`);
-  (<HTMLButtonElement>stopButton).disabled = true;
+  (<HTMLButtonElement>document.getElementById(`stop_engine-car-${id}`)).disabled = true;
   await stopEngine(id);
   (<HTMLButtonElement>document.getElementById(`start_engine-car-${id}`)).disabled = false;
 
@@ -200,112 +199,117 @@ const setSortOrder = async (sort: string) => {
   }
 
   await updateWinners();
-  (<HTMLButtonElement>document.getElementById('winners-view')).innerHTML = renderWinners();
+  (<HTMLDivElement>document.getElementById('winners-view')).innerHTML = renderWinners();
 };
 
 export const listen = (): void => {
   document.body.addEventListener('click', async (event) => {
-    if ((<HTMLButtonElement>event.target).classList.contains('start__engine-button')) {
-      const id = +(<HTMLButtonElement>event.target).id.split('start_engine-car-')[1];
+    const eventElement = event.target as HTMLElement;
+    const garageView = document.getElementById('garage') as HTMLElement;
+    const garageViewElement = document.getElementById('garage-view') as HTMLElement;
+    const winnersViewElement = document.getElementById('winners-view') as HTMLElement;
+
+    if (eventElement.classList.contains('start__engine-button')) {
+      const id = +eventElement.id.split('start_engine-car-')[1];
       startDrive(id);
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('stop__engine-button')) {
-      const id = +(<HTMLButtonElement>event.target).id.split('stop_engine-car-')[1];
+    if (eventElement.classList.contains('stop__engine-button')) {
+      const id = +eventElement.id.split('stop_engine-car-')[1];
       stopDriving(id);
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('button-select')) {
-      selectedCar = await getCar(+(<HTMLButtonElement>event.target).id.split('select_car-')[1]);
-      (<HTMLInputElement>document.getElementById('update-name')).value = selectedCar.name;
-      (<HTMLInputElement>document.getElementById('update-color')).value = selectedCar.color;
-      (<HTMLInputElement>document.getElementById('update-name')).disabled = false;
-      (<HTMLInputElement>document.getElementById('update-color')).disabled = false;
+    if (eventElement.classList.contains('button-select')) {
+      selectedCar = await getCar(+eventElement.id.split('select_car-')[1]);
+      const updateName = document.getElementById('update-name') as HTMLInputElement;
+      const updateColor = document.getElementById('update-color') as HTMLInputElement;
+      updateName.value = selectedCar.name;
+      updateColor.value = selectedCar.color;
+      updateName.disabled = false;
+      updateColor.disabled = false;
       (<HTMLButtonElement>document.getElementById('update-submit')).disabled = false;
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('button-remove')) {
-      const id = +(<HTMLButtonElement>event.target).id.split('remove_car-')[1];
+    if (eventElement.classList.contains('button-remove')) {
+      const id = +eventElement.id.split('remove_car-')[1];
       await deleteCar(id);
       await deleteWinner(id);
       await updateGarage();
-      (<HTMLElement>document.getElementById('garage')).innerHTML = renderGarage();
+      garageView.innerHTML = renderGarage();
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('random-button')) {
-      (<HTMLButtonElement>event.target).disabled = true;
+    if (eventElement.classList.contains('random-button')) {
+      (<HTMLButtonElement>eventElement).disabled = true;
       const cars = generateRandomCars();
       await Promise.all(cars.map(async (el) => createCar(el)));
       await updateGarage();
-      (<HTMLElement>document.getElementById('garage')).innerHTML = renderGarage();
-      (<HTMLButtonElement>event.target).disabled = false;
+      garageView.innerHTML = renderGarage();
+      (<HTMLButtonElement>eventElement).disabled = false;
     }
-
-    if ((<HTMLButtonElement>event.target).classList.contains('race-button')) {
-      (<HTMLButtonElement>event.target).disabled = true;
+    if (eventElement.classList.contains('race-button')) {
+      (<HTMLButtonElement>eventElement).disabled = true;
       const winner = await race(startDrive);
       await savingWinner(winner as IWin);
-      const messageDiv = document.querySelector('.message');
-      const message = document.getElementById('message_alert');
-      (<HTMLElement>message).innerHTML = `${winner.name} winner (${winner.time}s)!`;
-      (<HTMLElement>messageDiv).classList.add('visible');
+      const messageDiv = document.querySelector('.message') as HTMLElement;
+      const message = document.getElementById('message_alert') as HTMLElement;
+      message.innerHTML = `${winner.name} winner (${winner.time}s)!`;
+      messageDiv.classList.add('visible');
       (<HTMLButtonElement>document.getElementById('reset')).disabled = false;
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('reset-button')) {
-      (<HTMLButtonElement>event.target).disabled = true;
+    if (eventElement.classList.contains('reset-button')) {
+      (<HTMLButtonElement>eventElement).disabled = true;
       storeData.cars.map(({ id }) => stopDriving(id as number));
       const messageDiv = document.querySelector('.message');
       messageDiv?.classList.remove('visible');
       (<HTMLButtonElement>document.getElementById('race')).disabled = false;
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('prev-button')) {
+    if (eventElement.classList.contains('prev-button')) {
       switch (storeData.view) {
         case 'garage': {
           storeData.carsPage--;
           await updateGarage();
-          (<HTMLElement>document.getElementById('garage')).innerHTML = renderGarage();
+          garageView.innerHTML = renderGarage();
           break;
         }
         case 'winners': {
           storeData.winnersPage--;
           await updateWinners();
-          (<HTMLElement>document.getElementById('winners-view')).innerHTML = renderWinners();
+          winnersViewElement.innerHTML = renderWinners();
           break;
         }
         default:
       }
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('next-button')) {
+    if (eventElement.classList.contains('next-button')) {
       switch (storeData.view) {
         case 'garage': {
           storeData.carsPage++;
           await updateGarage();
-          (<HTMLElement>document.getElementById('garage')).innerHTML = renderGarage();
+          garageView.innerHTML = renderGarage();
           break;
         }
         case 'winners': {
           storeData.winnersPage++;
           await updateWinners();
-          (<HTMLElement>document.getElementById('winners-view')).innerHTML = renderWinners();
+          winnersViewElement.innerHTML = renderWinners();
           break;
         }
         default:
       }
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('garage-navigation-button')) {
-      (<HTMLElement>document.getElementById('garage-view')).style.display = 'block';
-      (<HTMLElement>document.getElementById('winners-view')).style.display = 'none';
+    if (eventElement.classList.contains('garage-navigation-button')) {
+      garageViewElement.style.display = 'block';
+      winnersViewElement.style.display = 'none';
       storeData.view = 'garage';
       await updateGarage();
-      //
     }
-    if ((<HTMLButtonElement>event.target).classList.contains('winners-navigation-button')) {
-      (<HTMLElement>document.getElementById('winners-view')).style.display = 'block';
-      (<HTMLElement>document.getElementById('garage-view')).style.display = 'none';
+    if (eventElement.classList.contains('winners-navigation-button')) {
+      winnersViewElement.style.display = 'block';
+      garageViewElement.style.display = 'none';
       await updateWinners();
-      (<HTMLElement>document.getElementById('winners-view')).innerHTML = renderWinners();
+      winnersViewElement.innerHTML = renderWinners();
       storeData.view = 'winners';
     }
-    if ((<HTMLElement>event.target).classList.contains('button__win')) {
+    if (eventElement.classList.contains('button__win')) {
       setSortOrder('wins');
     }
-    if ((<HTMLElement>event.target).classList.contains('button__time')) {
+    if (eventElement.classList.contains('button__time')) {
       setSortOrder('time');
     }
   });
@@ -332,11 +336,13 @@ export const listen = (): void => {
     if (selectedCar) await updateCar(selectedCar.id as number, car);
     await updateGarage();
     (<HTMLElement>document.getElementById('garage')).innerHTML = renderGarage();
-    (<HTMLInputElement>document.getElementById('update-name')).value = '';
-    (<HTMLInputElement>document.getElementById('update-name')).disabled = true;
-    (<HTMLInputElement>document.getElementById('update-color')).disabled = true;
+    const updateName = document.getElementById('update-name') as HTMLInputElement;
+    const updateColor = document.getElementById('update-color') as HTMLInputElement;
+    updateName.value = '';
+    updateName.disabled = true;
+    updateColor.value = '#ffffff';
+    updateColor.disabled = true;
     (<HTMLButtonElement>document.getElementById('update-submit')).disabled = true;
-    (<HTMLInputElement>document.getElementById('update-color')).value = '#ffffff';
     selectedCar = null;
   });
 };
