@@ -45,7 +45,9 @@ const renderGarage = () => `
   <h2>Page №${storeData.carsPage}</h2>
   <ul class="garage__items">
     ${storeData.cars.map((car) => `
-      <li class="garage__item">${renderCar(car)}</li>
+      <li class="garage__item">
+        ${renderCar(car)}
+      </li>
     `).join('')}
   </ul>
 `;
@@ -82,8 +84,8 @@ const renderWinners = () => `
 export const render = async (): Promise<void> => {
   const homepage = `
     <div class="navigation">
-      <button class="button garage-navigation-button primary" id="garage-navigation">To garage</button>
-      <button class="button winners-navigation-button primary" id="winners-navigation">To winners</button>
+      <button class="button garage-navigation-button" id="garage-navigation">To garage</button>
+      <button class="button winners-navigation-button" id="winners-navigation">To winners</button>
     </div>
     <div id="garage-view">
       <div class="form__data">
@@ -99,8 +101,8 @@ export const render = async (): Promise<void> => {
         </form>
       </div>
       <div class="race-controls">
-        <button class="button race-button primary" id="race">Race</button>
-        <button class="button reset-button primary" id="reset">Reset</button>
+        <button class="button race-button" id="race">Race</button>
+        <button class="button reset-button" id="reset">Reset</button>
         <button class="button random-button" id="randomize">Generate cars</button>
       </div>
       <div class="garage__components" id="garage">
@@ -114,8 +116,8 @@ export const render = async (): Promise<void> => {
       ${renderWinners()}
     </div>
     <div class="pagination">
-      <button class="button primary prev-button" disabled id="prev">Prev</button>
-      <button class="button primary next-button" disabled id="next">Next</button>
+      <button class="button prev-button" disabled id="prev">Prev</button>
+      <button class="button next-button" disabled id="next">Next</button>
     </div>
   `;
   const root = document.createElement('div');
@@ -124,21 +126,23 @@ export const render = async (): Promise<void> => {
   document.body.appendChild(root);
 };
 
+const changeBtnPagination = (option: number): void => {
+  const btnPrev = document.getElementById('prev') as HTMLButtonElement;
+  const btnNext = document.getElementById('next') as HTMLButtonElement;
+  if (option === 7) {
+    btnNext.disabled = !(storeData.carsPage * option < storeData.carsCount);
+    btnPrev.disabled = !(storeData.carsPage > 1);
+  } else {
+    btnNext.disabled = !(storeData.winnersPage * option < storeData.winnersCount);
+    btnPrev.disabled = !(storeData.winnersPage > 1);
+  }
+};
+
 export const updateGarage = async (): Promise<void> => {
   const { items, count } = await getCars(storeData.carsPage);
   storeData.cars = items;
   storeData.carsCount = count;
-
-  if (storeData.carsPage * 7 < storeData.carsCount) {
-    (<HTMLButtonElement>document.getElementById('next')).disabled = false;
-  } else {
-    (<HTMLButtonElement>document.getElementById('next')).disabled = true;
-  }
-  if (storeData.carsPage > 1) {
-    (<HTMLButtonElement>document.getElementById('prev')).disabled = false;
-  } else {
-    (<HTMLButtonElement>document.getElementById('prev')).disabled = true;
-  }
+  changeBtnPagination(7);
 };
 
 export const updateWinners = async (): Promise<void> => {
@@ -149,19 +153,9 @@ export const updateWinners = async (): Promise<void> => {
     sortByPos: storeData.sortByPos,
     order: storeData.order,
   });
-
   storeData.winners = items;
   storeData.winnersCount = count;
-  if (storeData.winnersPage * 10 < storeData.winnersCount) {
-    (<HTMLButtonElement>document.getElementById('next')).disabled = false;
-  } else {
-    (<HTMLButtonElement>document.getElementById('next')).disabled = true;
-  }
-  if (storeData.winnersPage > 1) {
-    (<HTMLButtonElement>document.getElementById('prev')).disabled = false;
-  } else {
-    (<HTMLButtonElement>document.getElementById('prev')).disabled = true;
-  }
+  changeBtnPagination(10);
 };
 
 const startDrive = async (id: number): Promise<{ success: boolean, id: number, time: number }> => {
@@ -298,6 +292,8 @@ export const listen = (): void => {
       (<HTMLElement>document.getElementById('garage-view')).style.display = 'block';
       (<HTMLElement>document.getElementById('winners-view')).style.display = 'none';
       storeData.view = 'garage';
+      await updateGarage();
+      //
     }
     if ((<HTMLButtonElement>event.target).classList.contains('winners-navigation-button')) {
       (<HTMLElement>document.getElementById('winners-view')).style.display = 'block';

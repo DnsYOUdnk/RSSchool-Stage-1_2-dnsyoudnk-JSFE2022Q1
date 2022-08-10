@@ -42,8 +42,40 @@ export function animation(car: HTMLElement, distance: number, animationTime: num
   return state;
 }
 
-const models = ['Lada', 'UAZ', 'Chevrolet', 'Toyota', 'Renault', 'Fiat', 'Kia', 'Hyundai', 'VW'];
-const names = ['Vesta', 'Patriot', 'Camaro', 'Corolla', 'Megan', 'Noname', 'Spectra', 'Solaris', 'Polo'];
+const models = [
+  'Kia',
+  'Hyundai',
+  'Chevrolet',
+  'Audi', 'BMW',
+  'AlfaRomeo',
+  'Volkswagen',
+  'Lada',
+  'UAZ',
+  'Toyota',
+  'Renault',
+  'Fiat',
+  'Tesla',
+];
+
+const names = [
+  'Vesta',
+  'Patriot',
+  'Camaro',
+  'Corolla',
+  'Golf',
+  'X5',
+  'A80',
+  'MITO',
+  'T-Roc',
+  'Megan',
+  'Noname',
+  'Spectra',
+  'Solaris',
+  'Polo',
+  'Model S',
+  'Model X',
+  'Cybertruck',
+];
 
 export const getRandomName = () => {
   const model = models[Math.floor(Math.random() * models.length)];
