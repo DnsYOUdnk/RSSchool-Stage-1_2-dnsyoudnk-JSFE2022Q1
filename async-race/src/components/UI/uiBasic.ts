@@ -59,9 +59,9 @@ const renderWinners = () => `
         <th>Number</th>
         <th>Car</th>
         <th>Name</th>
-        <th class="table__winners-button ${storeData.sort === 'wins' ? storeData.sortOrder : ''}
+        <th class="table__winners-button button__win ${storeData.sortByPos}
         "id="sort-by-wins">Wins</th>
-        <th class="table__winners-button ${storeData.sort === 'time' ? storeData.sortOrder : ''}
+        <th class="table__winners-button button__time ${storeData.sortByTime}
         "id="sort-by-time">Best time(seconds)</th>
       </thead>
       <tbody>
@@ -145,8 +145,9 @@ export const updateWinners = async (): Promise<void> => {
   const { items, count } = await getWinners({
     page: storeData.winnersPage,
     limit: 10,
-    sort: storeData.sort,
-    order: storeData.sortOrder,
+    sortByTime: storeData.sortByTime,
+    sortByPos: storeData.sortByPos,
+    order: storeData.order,
   });
 
   storeData.winners = items;
@@ -196,11 +197,16 @@ const stopDriving = async (id: number) => {
 };
 
 const setSortOrder = async (sort: string) => {
-  storeData.sortOrder = storeData.sortOrder === 'asc' ? 'desc' : 'asc';
-  storeData.sort = sort;
+  if (sort === 'wins') {
+    storeData.sortByPos = storeData.sortByPos === 'asc' ? 'desc' : 'asc';
+    storeData.order = sort;
+  } else {
+    storeData.sortByTime = storeData.sortByTime === 'asc' ? 'desc' : 'asc';
+    storeData.order = sort;
+  }
 
   await updateWinners();
-  (<HTMLButtonElement>document.getElementById('winners-navigation')).innerHTML = renderWinners();
+  (<HTMLButtonElement>document.getElementById('winners-view')).innerHTML = renderWinners();
 };
 
 export const listen = (): void => {
@@ -300,10 +306,10 @@ export const listen = (): void => {
       (<HTMLElement>document.getElementById('winners-view')).innerHTML = renderWinners();
       storeData.view = 'winners';
     }
-    if ((<HTMLElement>event.target).classList.contains('table-wins')) {
+    if ((<HTMLElement>event.target).classList.contains('button__win')) {
       setSortOrder('wins');
     }
-    if ((<HTMLElement>event.target).classList.contains('table-time')) {
+    if ((<HTMLElement>event.target).classList.contains('button__time')) {
       setSortOrder('time');
     }
   });

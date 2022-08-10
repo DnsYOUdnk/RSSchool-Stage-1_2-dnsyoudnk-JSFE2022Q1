@@ -6,7 +6,8 @@ const { items: cars, count: carsCount } = await getCars(1);
 const { items: winners, count: winnersCount } = await getWinners({
   page: 1,
   limit: 10,
-  sort: '',
+  sortByTime: '',
+  sortByPos: '',
   order: '',
 });
 
@@ -19,6 +20,7 @@ export default ({
   winnersCount,
   animation: {},
   view: 'garage',
-  sort: '',
-  sortOrder: '',
+  sortByTime: '',
+  sortByPos: '',
+  order: '',
 } as IStoreData);

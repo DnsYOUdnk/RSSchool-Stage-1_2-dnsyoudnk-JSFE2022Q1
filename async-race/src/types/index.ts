@@ -11,8 +11,9 @@ export interface DataMotion {
 
 export interface ParamWinners {
   page: number,
-  limit: number
-  sort: string,
+  limit: number,
+  sortByTime: string,
+  sortByPos: string,
   order: string,
 }
 
@@ -38,8 +39,9 @@ export interface IStoreData {
   winnersCount: number,
   animation: Record<string, Record<string, number>>,
   view: string,
-  sort: string,
-  sortOrder: string
+  sortByTime: string,
+  sortByPos: string,
+  order: string,
 }
 
 export interface IWin {

@@ -262,15 +262,15 @@ thead {
   font-weight: 600;
 }
 
-.table-button {
+.table__winners-button {
   cursor: pointer;
 }
 
-.table-button.asc::after {
+.table__winners-button.asc::after {
   content: '↑';
 }
 
-.table-button.desc:after {
+.table__winners-button:after {
   content: '↓';
 }
 
