@@ -1,6 +1,6 @@
 import { garage } from './api';
 import { ICar } from '../../types';
-import { getRandomName } from '../../utils/getRandomImage';
+import { getRandomName } from '../../utils/getRandomName';
 
 export const createCar = async (body: ICar): Promise<ICar> => {
   if (body.name === '') body.name = getRandomName();

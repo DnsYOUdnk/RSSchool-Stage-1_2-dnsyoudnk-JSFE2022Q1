@@ -8,10 +8,15 @@ import { startEngine, stopEngine, driveCar } from '../apiFunctions/changeEngineC
 import { getWinners } from '../apiFunctions/getWinners';
 import { deleteWinner, savingWinner } from '../apiFunctions/changeWinner';
 import { ICar, IWin } from '../../types';
-import { dataImage } from '../dataImage/dataImage';
-import {
-  animation, generateRandomCars, getDistance, getRandomImage, race,
-} from '../../utils/getRandomImage';
+import { dataImage } from '../../dataImage/dataImage';
+import { getRandomImage } from '../../utils/getRandomImage';
+import { getDistance } from '../../utils/getDistance';
+import { getAnimation } from '../../utils/getAnimation';
+import { generateRandomCars } from '../../utils/generateRandomCars';
+import { startRace } from '../../utils/startRace';
+// import {
+//   animation, generateRandomCars, getDistance, getRandomImage, race,
+// } from '../../utils/getRandomImage';
 
 let selectedCar: ICar | null = null;
 
@@ -171,7 +176,7 @@ const startDrive = async (id: number): Promise<{ success: boolean, id: number, t
   const flag = document.getElementById(`flag-${id}`) as HTMLDivElement;
   const htmlDistance = Math.floor(getDistance(car, flag));
 
-  storeData.animation[id] = animation((car), htmlDistance, time);
+  storeData.animation[id] = getAnimation((car), htmlDistance, time);
 
   const { success } = await driveCar(id);
   if (!success) window.cancelAnimationFrame(storeData.animation[id].id);
@@ -244,7 +249,7 @@ export const listen = (): void => {
     }
     if (eventElement.classList.contains('race-button')) {
       (<HTMLButtonElement>eventElement).disabled = true;
-      const winner = await race(startDrive);
+      const winner = await startRace(startDrive);
       await savingWinner(winner as IWin);
       const messageDiv = document.querySelector('.message') as HTMLElement;
       const message = document.getElementById('message_alert') as HTMLElement;
