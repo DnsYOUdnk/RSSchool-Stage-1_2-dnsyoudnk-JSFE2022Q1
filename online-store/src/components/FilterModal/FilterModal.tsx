@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { defaultFilterValue } from "../../defaultFilterData";
-import { Context } from "../../StoreContext";
-import { IFilterModal } from "../../types";
-import RangeSlider from "../RangeSlider/RangeSlider";
-import "./filterModal.css";
+import { useContext } from 'react';
+import { defaultFilterValue } from '../../defaultFilterData';
+import { Context } from '../../StoreContext';
+import { IFilterModal } from '../../types';
+import RangeSlider from '../RangeSlider/RangeSlider';
+import './filterModal.css';
 
-export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
+export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
 
   const { filterValue, setFilterValue } = useContext(Context);
 
@@ -18,55 +18,55 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
   };
 
   const clickSortFilter = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-    if(filterValue) {
+    if (filterValue) {
       filterValue.sort = event.currentTarget.value;
-      setFilterValue!({...filterValue});
+      setFilterValue!({ ...filterValue });
     }
   };
 
   const clickAddFilter = (filterType: string): void => {
-    if(filterValue) {
-      switch(filterType) {
-        case "popular" : 
+    if (filterValue) {
+      switch (filterType) {
+        case 'popular' : 
           filterValue.checkPopular = !filterValue.checkPopular;
           break;
-        case "viewBasket" : 
+        case 'viewBasket' : 
           filterValue.checkBasket = !filterValue.checkBasket;
           break;
-        case "mens clothing" : 
+        case 'mens clothing' : 
           filterValue.categoryMenclo = !filterValue.categoryMenclo;
           break;
-        case "womens clothing" : 
+        case 'womens clothing' : 
           filterValue.categoryWomenclo = !filterValue.categoryWomenclo;
           break;
-        case "jewelery" : 
+        case 'jewelery' : 
           filterValue.categoryJuw = !filterValue.categoryJuw;
           break;
-        case "electronics" : 
+        case 'electronics' : 
           filterValue.categoryElec = !filterValue.categoryElec;
           break;
         default: 
           break;
       }
-      setFilterValue!({...filterValue});
+      setFilterValue!({ ...filterValue });
     }
   };
 
   const resetFilter = ():void => {
-    if(filterValue) {
-      defaultFilterValue.sort = filterValue.sort
-      localStorage.setItem("filterValue", JSON.stringify(defaultFilterValue));
-      setFilterValue!({...defaultFilterValue});
+    if (filterValue) {
+      defaultFilterValue.sort = filterValue.sort;
+      localStorage.setItem('filterValue', JSON.stringify(defaultFilterValue));
+      setFilterValue!({ ...defaultFilterValue });
     }
     setShowFilterModal(false);
-  }
+  };
 
   const demolitionFilter = (): void => {
     const newData = defaultFilterValue;
     localStorage.clear();
     window.location.reload();
-    setFilterValue!({...newData});
-  }
+    setFilterValue!({ ...newData });
+  };
 
   return (
     <div className="filter__modal" onClick={() => { closeFilterModal(); }}>
@@ -98,9 +98,9 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
                 Men's clothing
                 <input type="checkbox" 
                   defaultChecked={filterValue!.categoryMenclo} 
-                  name={"mens_product"} 
+                  name={'mens_product'} 
                   id="mens_product" 
-                  onClick={() => clickAddFilter("mens clothing")} />
+                  onClick={() => clickAddFilter('mens clothing')} />
               </label>
             </div>
             <div className="filter__value__item">
@@ -108,9 +108,9 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
                 Women's clothing
                 <input type="checkbox" 
                   defaultChecked={filterValue!.categoryWomenclo} 
-                  name={"womens_product"} 
+                  name={'womens_product'} 
                   id="womens_product" 
-                  onClick={() => clickAddFilter("womens clothing")} />
+                  onClick={() => clickAddFilter('womens clothing')} />
               </label>
             </div>
             <div className="filter__value__item">
@@ -118,9 +118,9 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
                 Jewelery
                 <input type="checkbox" 
                   defaultChecked={filterValue!.categoryJuw} 
-                  name={"jewelery_product"} 
+                  name={'jewelery_product'} 
                   id="jewelery_product" 
-                  onClick={() => clickAddFilter("jewelery")} />
+                  onClick={() => clickAddFilter('jewelery')} />
               </label>
             </div>
             <div className="filter__value__item">
@@ -128,20 +128,20 @@ export const FilterModal = ({setShowFilterModal}: IFilterModal) => {
                 Electronics
                 <input type="checkbox" 
                   defaultChecked={filterValue!.categoryElec} 
-                  name={"electronics_product"} 
+                  name={'electronics_product'} 
                   id="electronics_product" 
-                  onClick={() => clickAddFilter("electronics")} />
+                  onClick={() => clickAddFilter('electronics')} />
               </label>
             </div>
           </div>
           <div className="filter__value__popular">
             <label>
-              Popular products <input type="checkbox" name="popular_product" defaultChecked={filterValue!.checkPopular} id="popular_product" onClick={() => clickAddFilter("popular")}/>
+              Popular products <input type="checkbox" name="popular_product" defaultChecked={filterValue!.checkPopular} id="popular_product" onClick={() => clickAddFilter('popular')}/>
             </label>
           </div>
           <div className="filter__value__popular">
             <label>
-              Products in the basket <input type="checkbox" name="basket_product" defaultChecked={filterValue!.checkBasket} id="basket_product" onClick={() => clickAddFilter("viewBasket")}/>
+              Products in the basket <input type="checkbox" name="basket_product" defaultChecked={filterValue!.checkBasket} id="basket_product" onClick={() => clickAddFilter('viewBasket')}/>
             </label>
           </div>
         </div>

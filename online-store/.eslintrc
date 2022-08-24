@@ -1,25 +1,73 @@
 {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+  "extends": [
+    "airbnb-typescript",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "react-app",
+    "react-app/jest"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "jest"],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "rules": {
+    "no-debugger": "off",
+    "no-console": "warn",
+    "max-len": ["warn", { "code": 120 }],
+    "class-methods-use-this": "off",
+    "@typescript-eslint/no-explicit-any": 2,
+    "indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1
+      }
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 2020,
-        "sourceType": "module"
-    },
-    "env": {
-        "es6": true,
-        "browser": true,
-        "node": true
-    },
-    "rules": {
-        "no-debugger": "off",
-        "no-console": 0,
-        "class-methods-use-this": "off",
-        "@typescript-eslint/no-explicit-any": 2,
-        "import/order" : ["error", {
-            "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"]
-        }]
-    }
+    "@typescript-eslint/indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ]
+      }
+    ]
+  },
+  "ignorePatterns": ["*config.js"]
 }

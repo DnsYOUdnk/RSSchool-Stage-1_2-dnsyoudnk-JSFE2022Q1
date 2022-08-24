@@ -1,24 +1,24 @@
-import { FC, useContext } from "react";
-import { Context } from "../../StoreContext";
-import { IProduct } from "../../types";
-import { removeFromCart } from "../../utilities";
-import star from "./../../assets/svg/star.svg";
+import { FC, useContext } from 'react';
+import { Context } from '../../StoreContext';
+import { IProduct } from '../../types';
+import { removeFromCart } from '../../utilities';
+import star from './../../assets/svg/star.svg';
 
 interface ICatalogItem {
   product: IProduct;
 }
 
-export const CatalogItem: FC<ICatalogItem> = function ({product}) {
+export const CatalogItem: FC<ICatalogItem> = function ({ product }) {
 
-  let {id, image, title, price, category, rating} = product;
-  title = title.split(' ').slice(0,3).join(' ');
+  let { id, image, title, price, category, rating } = product;
+  title = title.split(' ').slice(0, 3).join(' ');
 
   const { addToCart, cart, setCart } = useContext(Context);
   
-  let findIndex: number = cart!.findIndex(({id}:{id: number}):boolean => id === product.id );
+  const findIndex: number = cart!.findIndex(({ id }:{ id: number }):boolean => id === product.id );
 
   return (
-    <li className={findIndex !== -1 ? "catalog__item active" : "catalog__item"}>
+    <li className={findIndex !== -1 ? 'catalog__item active' : 'catalog__item'}>
       <div className="catalog__item__img">
         <img src={image} alt="umg" />
       </div>
@@ -37,12 +37,12 @@ export const CatalogItem: FC<ICatalogItem> = function ({product}) {
         <div className="catalog__caption__price">{price} $</div>
         {findIndex !== -1 ? 
           <button 
-            id={String(id)+'del'} 
-            onClick={()=>{removeFromCart!(cart!, setCart!, findIndex)}} 
+            id={String(id) + 'del'} 
+            onClick={()=>{removeFromCart!(cart!, setCart!, findIndex);}} 
             className="catalog__caption__btn catalog__caption__btn-del" 
             title="Remove from cart">-</button> 
-          : ""}
-        <button id={String(id)} onClick={()=>{addToCart!(product, cart!, setCart!, findIndex)}} className="catalog__caption__btn" title="Add to cart">+</button>
+          : ''}
+        <button id={String(id)} onClick={()=>{addToCart!(product, cart!, setCart!, findIndex);}} className="catalog__caption__btn" title="Add to cart">+</button>
       </div>
     </li>
   );

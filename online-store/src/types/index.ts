@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from 'react';
 
 export interface IProduct {
   category: string;
@@ -12,13 +12,13 @@ export interface IProduct {
 }
 
 export interface IContext {
-    addToCart: funcAddToCart;
-    cart: IProduct[];
-    setCart: setCartState;
-    filterValue: IFilterValue; 
-    setFilterValue: Dispatch<SetStateAction<IFilterValue>>;
-    searchValue: string;
-    setSearchValue: Dispatch<SetStateAction<string>>;
+  addToCart: funcAddToCart;
+  cart: IProduct[];
+  setCart: setCartState;
+  filterValue: IFilterValue; 
+  setFilterValue: Dispatch<SetStateAction<IFilterValue>>;
+  searchValue: string;
+  setSearchValue: Dispatch<SetStateAction<string>>;
 }
 
 export type setCartState = Dispatch<SetStateAction<IProduct[]>>;

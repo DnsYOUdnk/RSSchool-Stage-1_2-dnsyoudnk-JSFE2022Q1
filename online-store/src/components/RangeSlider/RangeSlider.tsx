@@ -2,18 +2,18 @@ import Slider from '@mui/material/Slider';
 import { useContext, useState } from 'react';
 import { Context } from '../../StoreContext';
 
-export default function RangeSlider({maxValue, valueRange, markRange}:{maxValue: number, valueRange: number[], markRange: string}) {
+export default function RangeSlider({ maxValue, valueRange, markRange }:{ maxValue: number, valueRange: number[], markRange: string }) {
 
   const [value, setValue] = useState<number[]>(valueRange);
   const { filterValue, setFilterValue } = useContext(Context);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
-    if(markRange === '$' && filterValue) {
+    if (markRange === '$' && filterValue) {
       filterValue.priceRange = Array.isArray(newValue) ? newValue : filterValue.priceRange;
-      setFilterValue!({...filterValue})
+      setFilterValue!({ ...filterValue });
     } else if (markRange === 'pc.' && filterValue) {
       filterValue.countRange = Array.isArray(newValue) ? newValue : filterValue.countRange;
-      setFilterValue!({...filterValue})
+      setFilterValue!({ ...filterValue });
     }
     setValue(newValue as number[]);
   };
