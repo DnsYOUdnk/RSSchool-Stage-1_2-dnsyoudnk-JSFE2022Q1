@@ -10,7 +10,7 @@ interface ICatalogItem {
 
 export const CatalogItem: FC<ICatalogItem> = function ({ product }) {
 
-  let { id, image, title, price, category, rating } = product;
+  const { id, image, title, price, category, rating } = product;
   title = title.split(' ').slice(0, 3).join(' ');
 
   const { addToCart, cart, setCart } = useContext(Context);

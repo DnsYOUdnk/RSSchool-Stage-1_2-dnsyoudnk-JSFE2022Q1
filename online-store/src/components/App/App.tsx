@@ -6,7 +6,7 @@ import { Main } from '../Main/Main';
 import { Footer } from '../Footer/Footer';
 import './App.css';
 
-function App() {
+const App = () => {
   const cartData = getCartData();
   const filterData = getFiltersValue();
   const [cart, setCart] = useState(cartData);
@@ -21,6 +21,6 @@ function App() {
       </div>
     </Context.Provider>
   );
-}
+};
 
 export default App;
