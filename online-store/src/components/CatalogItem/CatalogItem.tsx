@@ -11,11 +11,11 @@ interface ICatalogItem {
 export const CatalogItem: FC<ICatalogItem> = function ({ product }) {
 
   const { id, image, title, price, category, rating } = product;
-  title = title.split(' ').slice(0, 3).join(' ');
+  const shortTitle = title.split(' ').slice(0, 3).join(' ');
 
   const { addToCart, cart, setCart } = useContext(Context);
   
-  const findIndex: number = cart!.findIndex(({ id }:{ id: number }):boolean => id === product.id );
+  const findIndex: number = cart!.findIndex((elem):boolean => elem.id === id );
 
   return (
     <li className={findIndex !== -1 ? 'catalog__item active' : 'catalog__item'}>
@@ -23,7 +23,7 @@ export const CatalogItem: FC<ICatalogItem> = function ({ product }) {
         <img src={image} alt="umg" />
       </div>
       <div className="catalog__caption">
-        <div className="catalog__caption__name">{title}</div>
+        <div className="catalog__caption__name">{shortTitle}</div>
         <div className="catalog__caption__subname">{category}</div>
         <div className="catalog__caption__intellegence">
           <div className="catalog__caption__rating">
@@ -42,7 +42,10 @@ export const CatalogItem: FC<ICatalogItem> = function ({ product }) {
             className="catalog__caption__btn catalog__caption__btn-del" 
             title="Remove from cart">-</button> 
           : ''}
-        <button id={String(id)} onClick={()=>{addToCart!(product, cart!, setCart!, findIndex);}} className="catalog__caption__btn" title="Add to cart">+</button>
+        <button 
+          id={String(id)} 
+          onClick={()=>{addToCart!(product, cart!, setCart!, findIndex);}} 
+          className="catalog__caption__btn" title="Add to cart">+</button>
       </div>
     </li>
   );

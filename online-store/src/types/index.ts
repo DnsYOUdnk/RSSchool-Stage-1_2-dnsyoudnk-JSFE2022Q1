@@ -12,23 +12,23 @@ export interface IProduct {
 }
 
 export interface IContext {
-  addToCart: funcAddToCart;
+  addToCart: FuncAddToCart;
   cart: IProduct[];
-  setCart: setCartState;
+  setCart: SetCartState;
   filterValue: IFilterValue; 
   setFilterValue: Dispatch<SetStateAction<IFilterValue>>;
   searchValue: string;
   setSearchValue: Dispatch<SetStateAction<string>>;
 }
 
-export type setCartState = Dispatch<SetStateAction<IProduct[]>>;
+export type SetCartState = Dispatch<SetStateAction<IProduct[]>>;
 
 export interface ICartState {
   cart: IProduct[];
-  setCart: setCartState;
+  setCart: SetCartState;
 }
 
-export type funcAddToCart =  (product: IProduct, cart:IProduct[], setCart:setCartState, findIndex: number) => void;
+export type FuncAddToCart =  (product: IProduct, cart:IProduct[], setCart:SetCartState, findIndex: number) => void;
 
 export interface IFilterModal {
   setShowFilterModal: Dispatch<SetStateAction<boolean>>;

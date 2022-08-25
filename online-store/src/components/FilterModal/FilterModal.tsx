@@ -95,7 +95,7 @@ export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
           <div className="filter__value__categories">
             <div className="filter__value__item">
               <label>
-                Men's clothing
+                Men&apos;s clothing
                 <input type="checkbox" 
                   defaultChecked={filterValue!.categoryMenclo} 
                   name={'mens_product'} 
@@ -105,7 +105,7 @@ export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
             </div>
             <div className="filter__value__item">
               <label>
-                Women's clothing
+                Women&apos;s clothing
                 <input type="checkbox" 
                   defaultChecked={filterValue!.categoryWomenclo} 
                   name={'womens_product'} 

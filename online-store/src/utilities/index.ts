@@ -1,5 +1,5 @@
 import { defaultFilterValue } from '../defaultFilterData';
-import { IProduct, setCartState } from '../types';
+import { IProduct, SetCartState } from '../types';
 
 export const getCartData = (): IProduct[] => {
   const value = localStorage.getItem('cart');
@@ -8,7 +8,7 @@ export const getCartData = (): IProduct[] => {
     : [];
 };
 
-export const addToCart = (product: IProduct, cart:IProduct[], setCart:setCartState, findIndex: number): void => {
+export const addToCart = (product: IProduct, cart:IProduct[], setCart:SetCartState, findIndex: number): void => {
 
   const quantityProduct: number = cart.reduce((sum, { count }) => sum + count!, 0);
 
@@ -25,15 +25,16 @@ export const addToCart = (product: IProduct, cart:IProduct[], setCart:setCartSta
   setCart([...cart]);
 };
 
-export const removeFromCart = ( cart:IProduct[], setCart:setCartState, findIndex: number): void => {
-  if (cart[findIndex].count !== 1) {
-    cart[findIndex].count!--;
+export const removeFromCart = ( cart:IProduct[], setCart:SetCartState, findIndex: number): void => {
+  let changeCart = cart;
+  if (changeCart[findIndex].count !== 1) {
+    changeCart[findIndex].count!--;
   } else {
-    cart = cart.filter((_: IProduct, id: number) => id !== findIndex);
+    changeCart = cart.filter((_: IProduct, id: number) => id !== findIndex);
   }
 
-  localStorage.setItem('cart', JSON.stringify(cart));
-  setCart([...cart]);
+  localStorage.setItem('cart', JSON.stringify(changeCart));
+  setCart([...changeCart]);
 };
 
 export const getFiltersValue = () => {

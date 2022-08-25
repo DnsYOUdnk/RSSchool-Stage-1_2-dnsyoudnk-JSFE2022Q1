@@ -14,12 +14,12 @@ export const handlePrevNext = (productList: RefObject<HTMLUListElement>, directi
   const liFullWidth: number = liFirstWidth + liFirstMR;
   const breakPoint: number = getBreakPoint(liFullWidth, productItem, productList);
   let ml = 0;
-  const directionNext = 1;
-  const directionPrev = -1;
+  const DIRECTION_NEXT = 1;
+  const DIRECTION_PREV = -1;
 
   //depending on the pressed button, we subtract or add an indent to move the products
   if (liFirstML < breakPoint + liFullWidth) {
-    ml = liFirstML + (direction === 'next' ? directionNext : directionPrev) * liFullWidth;
+    ml = liFirstML + (direction === 'next' ? DIRECTION_NEXT : DIRECTION_PREV) * liFullWidth;
   }
 
   liFirst.style.marginLeft = `-${ml}px`;
