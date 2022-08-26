@@ -6,7 +6,7 @@ import { Main } from '../Main/Main';
 import { Footer } from '../Footer/Footer';
 import './App.css';
 
-const App = () => {
+export const App = () => {
   const cartData = getCartData();
   const filterData = getFiltersValue();
   const [cart, setCart] = useState(cartData);
@@ -22,5 +22,3 @@ const App = () => {
     </Context.Provider>
   );
 };
-
-export default App;

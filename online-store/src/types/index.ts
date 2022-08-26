@@ -48,3 +48,12 @@ export interface IFilterValue {
 export interface ICatalogItem {
   product: IProduct;
 }
+
+export enum FilterTypes {
+  Popular = 'popular',
+  ViewBasket = 'viewBasket',
+  MensClothe = "men's clothing",
+  WomensClothe = "women's clothing",
+  Jewelery = 'jewelery',
+  Electronics = 'electronics',
+}

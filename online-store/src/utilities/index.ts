@@ -1,5 +1,4 @@
 import { IProduct, SetCartState } from '../types';
-
 import { defaultFilterValue } from '../defaultFilterData';
 
 export const getCartData = (): IProduct[] => {

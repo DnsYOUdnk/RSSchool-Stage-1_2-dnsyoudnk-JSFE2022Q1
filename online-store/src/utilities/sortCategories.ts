@@ -1,13 +1,13 @@
 import { arrCategories } from '../constants';
-import { IFilterValue } from '../types';
+import { FilterTypes, IFilterValue } from '../types';
 
 export const sortCategories = (filterValue: IFilterValue): string[] => {
   return arrCategories.filter((value: string): boolean => {
     switch (value) {
-      case "men's clothing": return filterValue.categoryMenclo;
-      case "women's clothing": return filterValue.categoryWomenclo;
-      case 'jewelery': return filterValue.categoryJuw;
-      case 'electronics': return filterValue.categoryElec;
+      case FilterTypes.MensClothe: return filterValue.categoryMenclo;
+      case FilterTypes.WomensClothe: return filterValue.categoryWomenclo;
+      case FilterTypes.Jewelery: return filterValue.categoryJuw;
+      case FilterTypes.Electronics: return filterValue.categoryElec;
       default: return false;
     }
   });

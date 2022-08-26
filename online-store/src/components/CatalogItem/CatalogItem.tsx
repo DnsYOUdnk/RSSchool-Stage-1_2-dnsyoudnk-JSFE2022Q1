@@ -1,5 +1,4 @@
 import { FC, useContext } from 'react';
-
 import { Context } from '../../StoreContext';
 import { ICatalogItem } from '../../types';
 import { THREE_WORDS_TITLE } from '../../constants';
