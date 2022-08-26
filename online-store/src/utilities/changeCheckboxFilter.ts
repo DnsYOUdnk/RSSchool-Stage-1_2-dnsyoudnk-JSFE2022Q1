@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { FilterTypes, IFilterValue } from '../types';
 
-export const clickAddFilter = (
+export const changeCheckboxFilter = (
   filterType: string,
   filterValue: IFilterValue,
   setFilterValue: Dispatch<SetStateAction<IFilterValue>>): void => {

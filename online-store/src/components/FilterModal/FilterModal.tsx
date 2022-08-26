@@ -1,7 +1,7 @@
 import { MouseEvent, useContext } from 'react';
 import { MAX_PRICE_VALUE, MAX_QUANTITY_VALUE, MIN_PRICE_VALUE, MIN_QUANTITY_VALUE } from '../../constants';
 import { IFilterModal, SliderMark, SortFilterTypes } from '../../types';
-import { clickAddFilter } from '../../utilities/changeCheckboxFilter';
+import { changeCheckboxFilter } from '../../utilities/changeCheckboxFilter';
 import { Context } from '../../StoreContext';
 import { defaultFilterValue } from '../../defaultFilterData';
 import RangeSlider from '../RangeSlider/RangeSlider';
@@ -80,7 +80,7 @@ export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
                   defaultChecked={filterValue!.categoryMenclo} 
                   name={'mens_product'} 
                   id="mens_product" 
-                  onClick={() => clickAddFilter("men's clothing", filterValue!, setFilterValue!)} />
+                  onClick={() => changeCheckboxFilter("men's clothing", filterValue!, setFilterValue!)} />
               </label>
             </div>
             <div className="filter__value__item">
@@ -90,7 +90,7 @@ export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
                   defaultChecked={filterValue!.categoryWomenclo} 
                   name={'womens_product'} 
                   id="womens_product" 
-                  onClick={() => clickAddFilter("women's clothing", filterValue!, setFilterValue!)} />
+                  onClick={() => changeCheckboxFilter("women's clothing", filterValue!, setFilterValue!)} />
               </label>
             </div>
             <div className="filter__value__item">
@@ -100,7 +100,7 @@ export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
                   defaultChecked={filterValue!.categoryJuw} 
                   name={'jewelery_product'} 
                   id="jewelery_product" 
-                  onClick={() => clickAddFilter('jewelery', filterValue!, setFilterValue!)} />
+                  onClick={() => changeCheckboxFilter('jewelery', filterValue!, setFilterValue!)} />
               </label>
             </div>
             <div className="filter__value__item">
@@ -110,7 +110,7 @@ export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
                   defaultChecked={filterValue!.categoryElec} 
                   name={'electronics_product'} 
                   id="electronics_product" 
-                  onClick={() => clickAddFilter('electronics', filterValue!, setFilterValue!)} />
+                  onClick={() => changeCheckboxFilter('electronics', filterValue!, setFilterValue!)} />
               </label>
             </div>
           </div>
@@ -121,7 +121,7 @@ export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
                 name="popular_product"
                 defaultChecked={filterValue!.checkPopular}
                 id="popular_product"
-                onClick={() => clickAddFilter('popular', filterValue!, setFilterValue!)}/>
+                onClick={() => changeCheckboxFilter('popular', filterValue!, setFilterValue!)}/>
             </label>
           </div>
           <div className="filter__value__popular">
@@ -132,7 +132,7 @@ export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
                 name="basket_product"
                 defaultChecked={filterValue!.checkBasket}
                 id="basket_product"
-                onClick={() => clickAddFilter('viewBasket', filterValue!, setFilterValue!)}/>
+                onClick={() => changeCheckboxFilter('viewBasket', filterValue!, setFilterValue!)}/>
             </label>
           </div>
         </div>
