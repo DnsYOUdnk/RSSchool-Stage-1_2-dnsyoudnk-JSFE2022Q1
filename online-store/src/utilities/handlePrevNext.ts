@@ -1,4 +1,5 @@
 import { RefObject } from 'react';
+import { MoveElements } from './../types/index';
 import { getBreakPoint } from './getBreakPoint';
 
 export const handlePrevNext = (productList: RefObject<HTMLUListElement>, direction: string) => {
@@ -19,7 +20,7 @@ export const handlePrevNext = (productList: RefObject<HTMLUListElement>, directi
 
   //depending on the pressed button, we subtract or add an indent to move the products
   if (liFirstML < breakPoint + liFullWidth) {
-    ml = liFirstML + (direction === 'next' ? DIRECTION_NEXT : DIRECTION_PREV) * liFullWidth;
+    ml = liFirstML + (direction === MoveElements.Next ? DIRECTION_NEXT : DIRECTION_PREV) * liFullWidth;
   }
 
   liFirst.style.marginLeft = `-${ml}px`;

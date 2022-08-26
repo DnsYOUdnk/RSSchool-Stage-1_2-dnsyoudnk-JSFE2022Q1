@@ -57,3 +57,20 @@ export enum FilterTypes {
   Jewelery = 'jewelery',
   Electronics = 'electronics',
 }
+
+export enum SliderMark {
+  MoneyСurrency = '$',
+  Piece = 'pc.',
+}
+
+export enum SortFilterTypes {
+  ASC = 'A-Z',
+  DESC = 'Z-A',
+  MaxPrice = 'Max',
+  MinPrice = 'Min',
+}
+
+export enum MoveElements {
+  Previous = 'prev',
+  Next = 'next',
+}

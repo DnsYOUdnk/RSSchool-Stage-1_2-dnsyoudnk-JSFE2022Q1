@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { MIN_POPULAR_RATING } from '../../constants';
 import { useGetProductsData } from '../../customHooks/useGetProductsData';
 import { Context } from '../../StoreContext';
-import { IProduct } from '../../types';
+import { IProduct, MoveElements } from '../../types';
 import { handlePrevNext } from '../../utilities/handlePrevNext';
 import { sortCategories } from '../../utilities/sortCategories';
 import { sortProducts } from '../../utilities/sortProducts';
@@ -71,14 +71,14 @@ export const Catalog = function () {
           <button
             className="main__setting__btn-prev"
             title="previous product"
-            onClick={() => handlePrevNext(productList, 'prev')}
+            onClick={() => handlePrevNext(productList, MoveElements.Previous)}
           >
             <img src={left} alt="left" />
           </button>
           <button
             className="main__setting__btn-next"
             title="next product"
-            onClick={() => handlePrevNext(productList, 'next')}
+            onClick={() => handlePrevNext(productList, MoveElements.Next)}
           >
             <img src={right} alt="right" />
           </button>

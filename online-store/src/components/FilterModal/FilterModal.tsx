@@ -1,10 +1,11 @@
 import { MouseEvent, useContext } from 'react';
+import { MAX_PRICE_VALUE, MAX_QUANTITY_VALUE, MIN_PRICE_VALUE, MIN_QUANTITY_VALUE } from '../../constants';
+import { IFilterModal, SliderMark, SortFilterTypes } from '../../types';
+import { clickAddFilter } from '../../utilities/changeCheckboxFilter';
 import { Context } from '../../StoreContext';
-import { IFilterModal } from '../../types';
 import { defaultFilterValue } from '../../defaultFilterData';
 import RangeSlider from '../RangeSlider/RangeSlider';
 import './filterModal.css';
-import { clickAddFilter } from '../../utilities/changeCheckboxFilter';
 
 export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
   const { filterValue, setFilterValue } = useContext(Context);
@@ -45,23 +46,29 @@ export const FilterModal = ({ setShowFilterModal }: IFilterModal) => {
           <span>Choose the type of sorting</span>
           <select 
             name="sort-element" 
-            value={filterValue ? filterValue.sort : 'A-Z'} 
+            value={filterValue ? filterValue.sort : SortFilterTypes.ASC} 
             className="sort_element" 
             onChange={(e) => clickSortFilter(e)}>
-            <option value="A-Z">By name, from A to Z</option>
-            <option value="Z-A">By name, from Z to A</option>
-            <option value="Max">By price, from max to min</option>
-            <option value="Min">By price, from min to max</option>
+            <option value={SortFilterTypes.ASC}>By name, from A to Z</option>
+            <option value={SortFilterTypes.DESC}>By name, from Z to A</option>
+            <option value={SortFilterTypes.MaxPrice}>By price, from max to min</option>
+            <option value={SortFilterTypes.MinPrice}>By price, from min to max</option>
           </select>
         </div>
         <div className="filter__range__items">
           <div className="filter__range__item">
             <span>Price range:</span>
-            <RangeSlider maxValue={1000} valueRange={filterValue ? filterValue.priceRange : [0, 1000]} markRange={'$'}/>
+            <RangeSlider 
+              maxValue={MAX_PRICE_VALUE}
+              valueRange={filterValue ? filterValue.priceRange : [MIN_PRICE_VALUE, MAX_PRICE_VALUE]}
+              markRange={SliderMark.MoneyСurrency}/>
           </div>
           <div className="filter__range__item">
             <span>Count range:</span>
-            <RangeSlider maxValue={700} valueRange={filterValue ? filterValue.countRange : [0, 700]} markRange={'pc.'}/>
+            <RangeSlider
+              maxValue={MAX_QUANTITY_VALUE}
+              valueRange={filterValue ? filterValue.countRange : [MIN_QUANTITY_VALUE, MAX_QUANTITY_VALUE]}
+              markRange={SliderMark.Piece}/>
           </div>
         </div>
         <div className="filter__value">
