@@ -24,7 +24,13 @@ export const Header = function () {
       </div>
       <div className="header__widget">
         <SearchInput/>
-        <Link to="/" className="header__cart"><img src={cartSVG} alt="cart"/><span className="header__cart_count">{getCartCount()}</span></Link>
+        <Link to="/" 
+          className="header__cart">
+          <img src={cartSVG} alt="cart"/>
+          <span className="header__cart_count">
+            {getCartCount()}
+          </span>
+        </Link>
       </div>
     </header>
   );

@@ -2,7 +2,8 @@ import Slider from '@mui/material/Slider';
 import { useContext, useState } from 'react';
 import { Context } from '../../StoreContext';
 
-export default function RangeSlider({ maxValue, valueRange, markRange }:{ maxValue: number, valueRange: number[], markRange: string }) {
+export default function RangeSlider(
+  { maxValue, valueRange, markRange }: { maxValue: number, valueRange: number[], markRange: string }) {
 
   const [value, setValue] = useState<number[]>(valueRange);
   const { filterValue, setFilterValue } = useContext(Context);

@@ -11,6 +11,13 @@ export const SearchInput = () =>{
   };
     
   return (
-    <input type='search' onChange={(e) => handleChange(e)} id='header__widget__value' autoComplete="off" placeholder='Search' autoFocus/>
+    <input 
+      type='search'
+      onChange={(e) => handleChange(e)}
+      id='header__widget__value'
+      autoComplete="off"
+      placeholder='Search'
+      autoFocus
+    />
   );
 };
