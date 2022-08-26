@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react';
+import { MIN_POPULAR_RATING } from '../../constants';
 import { useGetProductsData } from '../../customHooks/useGetProductsData';
 import { Context } from '../../StoreContext';
 import { IProduct } from '../../types';
@@ -7,6 +8,7 @@ import { sortCategories } from '../../utilities/sortCategories';
 import { sortProducts } from '../../utilities/sortProducts';
 import { CatalogItem } from '../CatalogItem/CatalogItem';
 import { FilterModal } from '../FilterModal/FilterModal';
+import { Loader } from '../Loader/Loader';
 import { NotFoundData } from '../NotFoundData/NotFoundData';
 import left from './../../assets/svg/left.svg';
 import right from './../../assets/svg/right.svg';
@@ -25,30 +27,27 @@ export const Catalog = function () {
 
     const filterArr = sortData
       .filter(({ title }) => {
-        return  title.split(' ').slice(0, 3).join(' ').toLowerCase().includes(searchValue!.toLowerCase());
+        return  title.toLowerCase().includes(searchValue?.toLowerCase() ?? '');
       })
       .filter(({ price }) => {
-        return  filterValue.priceRange[0] <= price && filterValue.priceRange[1] > price;
+        return  Math.min(...filterValue.priceRange) <= price && Math.max(...filterValue.priceRange) > price;
       })
       .filter(({ rating }) => {
-        const count = rating!.count;
-        return filterValue.countRange[0] <= count && filterValue.countRange[1] > count;
+        const count = rating.count;
+        return Math.min(...filterValue.countRange) <= count && Math.max(...filterValue.countRange) > count;
       })
       .filter(({ rating }) => {
-        return filterValue.checkPopular ? rating!.rate > 4 : true;
+        return filterValue.checkPopular ? rating.rate > MIN_POPULAR_RATING : true;
       })
-      .filter((product) => {
-        const index = cart!.findIndex((elem) => {
-          return elem.title === product.title;
-        });
-        return filterValue.checkBasket ? index !== -1 : true;
+      .filter(({ id }) => {
+        const inBasket = !!(cart?.find((elem) => {
+          return elem.id === id;
+        }));
+        return filterValue.checkBasket ? inBasket : true;
       })
       .filter(({ category }) => {
         const arrCategories = sortCategories(filterValue);
-        if (arrCategories.length > 0) {
-          return arrCategories.includes(category);
-        }
-        return true;
+        return arrCategories.length > 0 ? arrCategories.includes(category) : true;
       });
 
     localStorage.setItem('filterValue', JSON.stringify(filterValue));
@@ -94,9 +93,8 @@ export const Catalog = function () {
               }) : <NotFoundData />
             } 
           </ul>
-        ) : (
-          <h3>Loading.....</h3>
-        )}
+        ) : <Loader />
+        }
       </div>
     </>
   );

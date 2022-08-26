@@ -30,6 +30,7 @@
     "max-len": ["warn", { "code": 120 }],
     "class-methods-use-this": "off",
     "@typescript-eslint/no-explicit-any": 2,
+    "@typescript-eslint/no-non-null-assertion": "off",
     "indent": [
       "warn",
       2,

@@ -1,5 +1,6 @@
-import { defaultFilterValue } from '../defaultFilterData';
 import { IProduct, SetCartState } from '../types';
+
+import { defaultFilterValue } from '../defaultFilterData';
 
 export const getCartData = (): IProduct[] => {
   const value = localStorage.getItem('cart');
@@ -8,14 +9,14 @@ export const getCartData = (): IProduct[] => {
     : [];
 };
 
-export const addToCart = (product: IProduct, cart:IProduct[], setCart:SetCartState, findIndex: number): void => {
+export const addToCart = (product: IProduct, cart:IProduct[], setCart:SetCartState, findProduct: IProduct): void => {
 
   const quantityProduct: number = cart.reduce((sum, { count }) => sum + count!, 0);
 
   if (quantityProduct >= 20) {
     alert('Sorry, all slots are full');
-  } else if (findIndex !== -1) {
-    cart[findIndex].count!++;
+  } else if (findProduct) {
+    findProduct.count!++;
   } else {
     product.count = 1;
     cart.push(product);
@@ -25,12 +26,12 @@ export const addToCart = (product: IProduct, cart:IProduct[], setCart:SetCartSta
   setCart([...cart]);
 };
 
-export const removeFromCart = ( cart:IProduct[], setCart:SetCartState, findIndex: number): void => {
+export const removeFromCart = ( cart:IProduct[], setCart:SetCartState, findProduct: IProduct): void => {
   let changeCart = cart;
-  if (changeCart[findIndex].count !== 1) {
-    changeCart[findIndex].count!--;
+  if (findProduct.count !== 1) {
+    findProduct.count!--;
   } else {
-    changeCart = cart.filter((_: IProduct, id: number) => id !== findIndex);
+    changeCart = cart.filter(({ id }) => id !== findProduct.id);
   }
 
   localStorage.setItem('cart', JSON.stringify(changeCart));

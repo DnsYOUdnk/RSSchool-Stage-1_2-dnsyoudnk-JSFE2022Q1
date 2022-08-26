@@ -2,11 +2,11 @@ import { Dispatch, SetStateAction } from 'react';
 
 export interface IProduct {
   category: string;
-  description?: string;
+  description: string;
   id: number;
-  image?: string;
+  image: string;
   price: number;
-  rating?: { rate: number; count: number };
+  rating: { rate: number; count: number };
   title: string;
   count?: number;
 }
@@ -28,7 +28,7 @@ export interface ICartState {
   setCart: SetCartState;
 }
 
-export type FuncAddToCart =  (product: IProduct, cart:IProduct[], setCart:SetCartState, findIndex: number) => void;
+export type FuncAddToCart =  (product: IProduct, cart:IProduct[], setCart:SetCartState, findProduct: IProduct) => void;
 
 export interface IFilterModal {
   setShowFilterModal: Dispatch<SetStateAction<boolean>>;
@@ -44,4 +44,7 @@ export interface IFilterValue {
   categoryWomenclo: boolean;
   categoryJuw: boolean;
   categoryElec: boolean;
+}
+export interface ICatalogItem {
+  product: IProduct;
 }

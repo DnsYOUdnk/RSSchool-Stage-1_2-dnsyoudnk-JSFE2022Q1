@@ -37,6 +37,7 @@
 
 .catalog__item__img {
   margin: 14px 0;
+  height: 40%;
 }
 
 .catalog__item__img img {
@@ -53,7 +54,7 @@
   position: relative;
 }
 
-.catalog__caption__name {
+.catalog__caption__title {
   font-size: 32px;
   font-weight: bold;
   color: #473889;
@@ -61,7 +62,7 @@
   height: 74px;
 }
 
-.catalog__caption__subname,
+.catalog__caption__subtitle,
 .catalog__caption__count,
 .catalog__caption__rating {
   font-size: 18px;

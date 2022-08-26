@@ -41,6 +41,10 @@
     height: 400px;
     justify-content: start;
   }
+  
+  .catalog__item__img {
+    height: 37%;
+  }
 
   .catalog__item__img img {
     height: 146px;
@@ -48,7 +52,7 @@
     margin: 0;
   }
 
-  .catalog__caption__name {
+  .catalog__caption__title {
     font-size: 28px;
     height: 60px;
   }
@@ -100,6 +104,7 @@
   .catalog__not_found {
     flex-direction: column-reverse;
   }
+
 }
 
 @media screen and (max-width: 680px) {
