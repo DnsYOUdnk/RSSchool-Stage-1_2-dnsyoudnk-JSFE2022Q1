@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo a {
+  text-decoration: none;
+  color: #342869;
+  font-size: 32px;
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+}
+
+.header__logo a::after {
+  content: url("../../assets/svg/logo.svg");
+  display: block;
+  position: absolute;
+  right: -45px;
+  top: 5px;
+}
+
+.header__widget {
+  display: flex;
+  align-items: center;
+}
+
+#header__widget__value {
+  max-width: 350px;
+  width: 100%;
+  font-size: 20px;
+  border-radius: 24px;
+  border: 1px solid #e7e7e7;
+  font-family: "GT Walsheim Pro";
+  outline: none;
+  color: #473889;
+  padding: 20px 20px 20px 60px;
+  margin-right: 80px;
+  background-image: url("../../assets/svg/search.svg");
+  background-repeat: no-repeat;
+  background-position: center left 20px;
+}
+
+#header__widget__value::placeholder {
+  color: #473889;
+}
+
+a.header__cart {
+  position: relative;
+}
+
+.header__cart_count {
+  position: absolute;
+  top: 34px;
+  left: 24px;
+}

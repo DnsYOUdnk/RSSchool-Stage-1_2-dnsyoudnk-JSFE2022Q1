@@ -1,0 +1,141 @@
+.filter__modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter__modal__body {
+  background-color: #fff;
+  padding: 30px;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.filter__modal__title {
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.filter__sort {
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+.filter__sort span {
+  margin-right: 10px;
+}
+
+.sort_element {
+  padding: 10px 30px;
+  font-size: 16px;
+}
+
+.sort_element option {
+  color: #413382;
+  font-weight: 600;
+}
+
+.filter__range__items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter__range__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter__range__item > span {
+  width: 96px;
+}
+
+.range_slider {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.range_slider__value {
+  width: 64px;
+  font-size: 14px;
+}
+
+.range_slider__value:first-child {
+  text-align: right;
+}
+
+.range_slider > .css-187mznn-MuiSlider-root {
+  width: 80%;
+}
+
+.filter__value {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.filter__value__categories {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter__value__item label,
+.filter__value__popular label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.filter__value__item label:hover {
+  color: #270f90;
+}
+
+.filter__value__item input,
+.filter__value__popular input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.filter__buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.filter__buttons_reset {
+  flex-grow: 1;
+}
+
+.btn__res {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #958cbfb3;
+}
+
+.btn__res:hover {
+  background-color: #251e48b3;
+}

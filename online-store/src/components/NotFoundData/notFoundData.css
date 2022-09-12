@@ -1,0 +1,11 @@
+.catalog__not_found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.catalog__not_found h3 {
+    font-size: 36px;
+}

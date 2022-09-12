@@ -1,0 +1,75 @@
+.main {
+  flex: 1 0 auto;
+  margin: 30px 0;
+}
+
+.main__nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.main__filter {
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+  width: 100%;
+  justify-content: space-between;
+  margin-right: 130px;
+}
+
+.main__setting__btn {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.main__setting__btn-prev,
+.main__setting__btn-next {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  background-color: #fff;
+  font-weight: bold;
+  border: 1px solid transparent;
+  box-shadow: 2px 4px 10px 2px #88a6b4;
+}
+
+.main__setting__btn-prev:hover,
+.main__setting__btn-next:hover {
+  border: 1px solid #e7e7e7;
+  color: #464185;
+}
+
+.main__setting__btn-prev img,
+.main__setting__btn-next img {
+  opacity: 0.25;
+}
+
+.main__setting__btn-prev:hover img,
+.main__setting__btn-next:hover img {
+  opacity: 1;
+}
+
+.main__filter__btn {
+  width: 60px;
+  height: 60px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 50%;
+  background-image: url("../../assets/svg/drop.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  box-shadow: 2px 4px 10px 2px #88a6b4;
+  font-weight: bold;
+  color: #473889;
+}
+
+.main__filter__name {
+  font-size: 65px;
+  font-weight: bold;
+  color: #473889;
+}

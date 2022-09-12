@@ -1,0 +1,134 @@
+.catalog__items {
+  display: flex;
+  list-style: none;
+}
+
+.catalog__item {
+  width: 300px;
+  height: 498px;
+
+  flex: none;
+  border-radius: 35px;
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.catalog__item.active {
+  box-shadow: 0px 1px 6px 1px #a06e8b;
+  position: relative;
+}
+
+.catalog__item.active::after {
+  content: '';
+  content: url("../../assets/svg/basket.svg");
+  display: block;
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+
+.catalog__item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.catalog__item__img {
+  margin: 14px 0;
+  height: 40%;
+}
+
+.catalog__item__img img {
+  height: 200px;
+  max-width: 260px;
+}
+
+.catalog__caption {
+  background-color: #e7ddf2;
+  width: 94%;
+  padding: 0px 25px 0 25px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.catalog__caption__title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #473889;
+  margin-top: 10px;
+  height: 74px;
+}
+
+.catalog__caption__subtitle,
+.catalog__caption__count,
+.catalog__caption__rating {
+  font-size: 18px;
+  color: #988fbb;
+  margin-bottom: 10px;
+}
+
+.catalog__caption__intellegence {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog__caption__rating span {
+  margin-left: 10px;
+}
+
+.catalog__caption__rating img {
+  height: 16px;
+}
+
+.catalog__caption__price {
+  color: #413382;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+.catalog__caption__btn {
+  position: absolute;
+  right: 25px;
+  bottom: 10px;
+
+  color: #413382;
+  font-weight: 600;
+  background-color: #fff;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.catalog__caption:hover {
+  background-color: #776fc3;
+  color: #fff;
+}
+
+.catalog__caption__btn-del {
+  right: 85px;
+  color: #823333;
+  box-shadow: 0px 4px 15px rgba(92, 35, 35, 0.25);
+}
+
+.catalog__caption:hover .catalog__caption__btn {
+  background-color: #574a97;
+  color: #fff;
+}
+
+.catalog__caption:hover .catalog__caption__name,
+.catalog__caption:hover .catalog__caption__price {
+  color: #ffffff;
+}
+
+.catalog__caption:hover .catalog__caption__subname {
+  color: #c9c4ff;
+}

@@ -1,0 +1,9 @@
+export const PRODUCTS_DATA_URL = 'https://fakestoreapi.com/products';
+export const IMAGE_NOT_FOUND_URL = 'https://i.gifer.com/7VE.gif';
+export const ARR_CATEGORIES: string[] = ["men's clothing", "women's clothing", 'jewelery', 'electronics'];
+export const MIN_POPULAR_RATING = 4;
+export const THREE_WORDS_TITLE = 3;
+export const MIN_PRICE_VALUE = 0;
+export const MAX_PRICE_VALUE = 1000;
+export const MIN_QUANTITY_VALUE = 0;
+export const MAX_QUANTITY_VALUE = 700;
