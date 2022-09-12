@@ -14,7 +14,7 @@ export const renderCar = ({ id, name, color }: ICar) => `
       <button class="icon stop__engine-button" id="stop_engine-car-${id}" disabled>Stop</button>
     </div>
     <div class="car__item" id="car-${id}">
-      ${getCarImage(color, id as number)}
+      ${getCarImage(color, id!)}
     </div>
   </div>
   <div class="finish__flag" id="flag-${id}"><img src="./finish.svg" alt="finish"></div>

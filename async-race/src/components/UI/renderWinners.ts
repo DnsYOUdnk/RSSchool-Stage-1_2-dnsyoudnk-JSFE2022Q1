@@ -16,13 +16,13 @@ export const renderWinners = () => `
       "id="sort-by-time">Best time(seconds)</th>
     </thead>
     <tbody>
-      ${storeData.winners.map((winner, index) => `
+      ${storeData.winners.map(({ car, time, wins }, index) => `
         <tr>
           <td>${index + 1}</td>
-          <td>${getCarImage(winner.car.color, winner.car.id as number)}</td>
-          <td>${winner.car.name}</td>
-          <td>${winner.wins}</td>
-          <td>${winner.time}</td>
+          <td>${getCarImage(car.color, car.id as number)}</td>
+          <td>${car.name}</td>
+          <td>${wins}</td>
+          <td>${time}</td>
         </tr>
       `).join('')}
     </tbody>
