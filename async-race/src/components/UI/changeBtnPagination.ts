@@ -1,6 +1,5 @@
+import { QUANTITY_ELEM_GARAGE } from '../../Constants';
 import storeData from '../storeData/storeData';
-
-const QUANTITY_ELEM_GARAGE = 7;
 
 export const changeBtnPagination = (option: number): void => {
   const btnPrev = document.getElementById('prev') as HTMLButtonElement;

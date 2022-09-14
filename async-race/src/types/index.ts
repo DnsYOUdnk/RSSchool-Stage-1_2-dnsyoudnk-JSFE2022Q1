@@ -50,3 +50,18 @@ export interface IWin {
   id?: number,
   time: number
 }
+
+export type StartDrive = {
+  success: boolean,
+  id: number,
+  time: number
+};
+
+export enum NamePage {
+  Winners = 'winners',
+  Garage = 'garage',
+}
+
+export enum Colors {
+  White = '#ffffff',
+}

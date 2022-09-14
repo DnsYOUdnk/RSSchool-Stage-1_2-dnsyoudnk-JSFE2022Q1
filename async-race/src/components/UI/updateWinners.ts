@@ -1,3 +1,4 @@
+import { QUANTITY_ELEM_WINNERS } from '../../Constants';
 import { getWinners } from '../apiFunctions/getWinners';
 import storeData from '../storeData/storeData';
 import { changeBtnPagination } from './changeBtnPagination';
@@ -12,6 +13,5 @@ export const updateWinners = async (): Promise<void> => {
   });
   storeData.winners = items;
   storeData.winnersCount = count;
-  const quantityElemWinners = 10;
-  changeBtnPagination(quantityElemWinners);
+  changeBtnPagination(QUANTITY_ELEM_WINNERS);
 };

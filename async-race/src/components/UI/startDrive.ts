@@ -1,14 +1,26 @@
+import { StartDrive } from '../../types';
 import { getAnimation } from '../../utils/getAnimation';
 import { getDistance } from '../../utils/getDistance';
 import { driveCar, startEngine } from '../apiFunctions/changeEngineCar';
 import storeData from '../storeData/storeData';
 
-export const startDrive = async (id: number): Promise<{ success: boolean, id: number, time: number }> => {
+export const startDrive = async (id: number): Promise<StartDrive> => {
   const startButton = document.getElementById(`start_engine-car-${id}`) as HTMLButtonElement;
   startButton.disabled = true;
-
-  const { velocity, distance } = await startEngine(id);
-  const time = Math.round(distance / velocity);
+  let time;
+  try {
+    const { velocity, distance } = await startEngine(id);
+    if (velocity === 0 || (!distance && !velocity)) {
+      throw new Error('Incorrect motion data was received');
+    }
+    time = Math.round(distance / velocity);
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error(err);
+    startButton.disabled = false;
+    time = 0;
+    return { success: false, id, time };
+  }
 
   (<HTMLButtonElement>document.getElementById(`stop_engine-car-${id}`)).disabled = false;
 

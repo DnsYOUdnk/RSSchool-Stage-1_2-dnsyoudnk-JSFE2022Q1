@@ -1,10 +1,7 @@
+import { ASCENDING_MARK, DESCENDING_MARK, MARK_WINS } from '../../Constants';
 import storeData from '../storeData/storeData';
 import { renderWinners } from './renderWinners';
 import { updateWinners } from './updateWinners';
-
-const MARK_WINS = 'wins';
-const ASCENDING_MARK = 'asc';
-const DESCENDING_MARK = 'desc';
 
 export const setSortOrder = async (sort: string) => {
   if (sort === MARK_WINS) {
