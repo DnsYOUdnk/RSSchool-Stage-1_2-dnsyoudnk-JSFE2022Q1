@@ -154,7 +154,7 @@ export const listen = (): void => {
       name: (<HTMLInputElement>document.getElementById('update-name')).value,
       color: (<HTMLInputElement>document.getElementById('update-color')).value,
     };
-    if (selectedCar) await updateCar(selectedCar.id as number, car);
+    if (selectedCar) await updateCar(selectedCar.id!, car);
     await updateGarage();
     (<HTMLElement>document.getElementById('garage')).innerHTML = renderGarage();
     const updateName = document.getElementById('update-name') as HTMLInputElement;

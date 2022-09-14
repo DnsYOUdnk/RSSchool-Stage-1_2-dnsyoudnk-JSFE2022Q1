@@ -1,7 +1,7 @@
 import { renderGarage } from './renderGarage';
 import { renderWinners } from './renderWinners';
 
-export const render = async (): Promise<void> => {
+export const render = (): void => {
   const homepage = `
     <div class="navigation">
       <button class="button garage-navigation-button" id="garage-navigation">To garage</button>

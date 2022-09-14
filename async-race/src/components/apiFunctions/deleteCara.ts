@@ -1,8 +1,12 @@
 import { garage } from './api';
 
 export const deleteCar = async (id: number): Promise<void> => {
-  const res = await fetch(`${garage}/${id}`, {
-    method: 'DELETE',
-  });
-  return res.json();
+  try {
+    const res = await fetch(`${garage}/${id}`, {
+      method: 'DELETE',
+    });
+    return await res.json();
+  } catch (err) {
+    throw new Error(err as string);
+  }
 };

@@ -10,7 +10,6 @@ export const setSortOrder = async (sort: string) => {
     storeData.sortByTime = storeData.sortByTime === ASCENDING_MARK ? DESCENDING_MARK : ASCENDING_MARK;
   }
   storeData.order = sort;
-
   await updateWinners();
   (<HTMLDivElement>document.getElementById('winners-view')).innerHTML = renderWinners();
 };
