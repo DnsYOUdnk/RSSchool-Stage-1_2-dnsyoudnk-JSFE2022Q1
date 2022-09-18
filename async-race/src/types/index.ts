@@ -65,3 +65,35 @@ export enum NamePage {
 export enum Colors {
   White = '#ffffff',
 }
+
+export type FetchRequest = {
+  source: string,
+  options: IOptions
+};
+
+export interface IOptions {
+  method: string;
+  body?: string;
+  headers: {
+    'Content-Type': string;
+  }
+}
+
+export enum RequestEngineStatus {
+  Start = 'started',
+  Stop = 'stopped',
+  Drive = 'drive',
+}
+
+export enum HTTPCodes {
+  Unauthorized = 401,
+  Not_Found = 404,
+}
+
+export enum RequestMethod {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  PATCH = 'PATCH',
+  DELETE = 'DELETE',
+}

@@ -1,67 +1,93 @@
-import { IWin, IWinner } from '../../types';
-import { winners } from './api';
+import {
+  FetchRequest, HTTPCodes, IWin, IWinner, RequestMethod,
+} from '../../types';
+import { WINNERS_URL } from './api';
+
+const getFetchRequest = (requestMethod: string, id?: number): FetchRequest => ({
+  source: `${WINNERS_URL}/${id || ''}`,
+  options: {
+    method: requestMethod,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  },
+});
 
 export const getWinner = async (id: number): Promise<IWinner> => {
-  try {
-    const res = await fetch(`${winners}/${id}`);
-    return await res.json();
-  } catch (err) {
-    throw new Error(err as string);
-  }
+  const request = getFetchRequest(RequestMethod.GET, id);
+  return fetch(request.source, request.options)
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      // eslint-disable-next-line no-console
+      console.error(Error(error.message));
+    });
 };
 
 export const deleteWinner = async (id: number): Promise<void> => {
-  try {
-    const res = await fetch(`${winners}/${id}`, { method: 'DELETE' });
-    return await res.json();
-  } catch (err) {
-    throw new Error(err as string);
-  }
+  const request = getFetchRequest(RequestMethod.DELETE, id);
+  return fetch(request.source, request.options)
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      // eslint-disable-next-line no-console
+      console.error(Error(error.message));
+    });
 };
 
 export const createWinner = async (body: IWinner): Promise<IWinner> => {
-  try {
-    const res = await fetch(winners, {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+  const request = getFetchRequest(RequestMethod.POST);
+  request.options.body = JSON.stringify(body);
+  return fetch(request.source, request.options)
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      // eslint-disable-next-line no-console
+      console.error(Error(error.message));
     });
-    return await res.json();
-  } catch (err) {
-    throw new Error(err as string);
-  }
 };
 
 export const updateWinner = async (id: number, body: IWinner): Promise<IWinner> => {
-  try {
-    const res = await fetch(`${winners}/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+  const request = getFetchRequest(RequestMethod.PUT, id);
+  request.options.body = JSON.stringify(body);
+  return fetch(request.source, request.options)
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      // eslint-disable-next-line no-console
+      console.error(Error(error.message));
     });
-    return await res.json();
-  } catch (err) {
-    throw new Error(err as string);
-  }
 };
 
 export const savingWinner = async (win: IWin): Promise<void> => {
+  const request = getFetchRequest(RequestMethod.GET, win.id);
   try {
-    const statusWin = await (await fetch(`${winners}/${win.id}`)).status;
-    if (statusWin === 404) {
+    const response = await fetch(request.source, request.options);
+    if (response.status === HTTPCodes.Not_Found) {
       await createWinner({
         id: win.id,
         wins: 1,
         time: win.time,
       });
     } else {
-      if (!win.id) return;
-      const winner = await getWinner(win.id);
-      await updateWinner(win.id, {
+      const winner = await response.json();
+      await updateWinner(win.id!, {
         id: win.id,
         wins: winner.wins + 1,
         time: win.time < winner.time ? win.time : winner.time,

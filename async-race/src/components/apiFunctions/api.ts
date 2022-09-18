@@ -1,5 +1,5 @@
-const base = 'http://localhost:3000';
+const BASE_URL = 'http://localhost:3000';
 
-export const garage = `${base}/garage`;
-export const engine = `${base}/engine`;
-export const winners = `${base}/winners`;
+export const GARAGE_URL = `${BASE_URL}/garage`;
+export const ENGINE_URL = `${BASE_URL}/engine`;
+export const WINNERS_URL = `${BASE_URL}/winners`;
