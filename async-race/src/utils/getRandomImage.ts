@@ -1,7 +1,6 @@
 import { QUANTITY_ELEM_GARAGE } from '../Constants';
 
 export const getRandomImage = (arr: string[], id: number) => {
-  const maxLengthArr = QUANTITY_ELEM_GARAGE;
-  const index = id % maxLengthArr;
+  const index = id % QUANTITY_ELEM_GARAGE;
   return arr[index];
 };

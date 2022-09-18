@@ -1,3 +1,4 @@
+import { DEFAULT_WINS_COUNT } from '../../Constants';
 import {
   FetchRequest, HTTPCodes, IWin, IWinner, RequestMethod,
 } from '../../types';
@@ -82,7 +83,7 @@ export const savingWinner = async (win: IWin): Promise<void> => {
     if (response.status === HTTPCodes.Not_Found) {
       await createWinner({
         id: win.id,
-        wins: 1,
+        wins: DEFAULT_WINS_COUNT,
         time: win.time,
       });
     } else {
