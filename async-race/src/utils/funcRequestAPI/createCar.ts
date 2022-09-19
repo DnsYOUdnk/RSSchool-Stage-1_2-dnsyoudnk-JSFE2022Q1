@@ -1,6 +1,6 @@
 import { GARAGE_URL } from './api';
 import { ICar, RequestMethod } from '../../types';
-import { getRandomName } from '../../utils/getRandomName';
+import { getRandomName } from '../getRandomName';
 
 export const createCar = async (body: ICar): Promise<ICar> => {
   try {

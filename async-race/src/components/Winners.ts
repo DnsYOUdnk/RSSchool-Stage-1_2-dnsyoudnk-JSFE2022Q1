@@ -1,4 +1,4 @@
-import { getCarImage } from '../../utils/getCarImage';
+import { getCarImage } from '../utils/getCarImage';
 import storeData from '../storeData/storeData';
 
 export const renderWinners = () => `

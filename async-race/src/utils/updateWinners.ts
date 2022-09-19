@@ -1,5 +1,5 @@
-import { QUANTITY_ELEM_WINNERS } from '../../Constants';
-import { getWinners } from '../apiFunctions/getWinners';
+import { QUANTITY_ELEM_WINNERS } from '../constants';
+import { getWinners } from './funcRequestAPI/getWinners';
 import storeData from '../storeData/storeData';
 import { changeBtnPagination } from './changeBtnPagination';
 

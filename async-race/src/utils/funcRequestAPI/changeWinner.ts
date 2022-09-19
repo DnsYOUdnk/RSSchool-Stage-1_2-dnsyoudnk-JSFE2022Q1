@@ -1,4 +1,4 @@
-import { DEFAULT_WINS_COUNT } from '../../Constants';
+import { DEFAULT_WINS_COUNT } from '../../constants';
 import {
   FetchRequest, HTTPCodes, IWin, IWinner, RequestMethod,
 } from '../../types';

@@ -1,4 +1,4 @@
-import { MARK_WINS, QUANTITY_ELEM_WINNERS } from '../../Constants';
+import { MARK_WINS, QUANTITY_ELEM_WINNERS } from '../../constants';
 import { ParamWinners, IWinners } from '../../types';
 import { WINNERS_URL } from './api';
 import { getCar } from './getCar';

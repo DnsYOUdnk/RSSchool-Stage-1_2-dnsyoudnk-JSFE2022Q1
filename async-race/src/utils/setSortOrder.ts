@@ -1,6 +1,6 @@
-import { ASCENDING_MARK, DESCENDING_MARK, MARK_WINS } from '../../Constants';
+import { ASCENDING_MARK, DESCENDING_MARK, MARK_WINS } from '../constants';
 import storeData from '../storeData/storeData';
-import { renderWinners } from './renderWinners';
+import { renderWinners } from '../components/Winners';
 import { updateWinners } from './updateWinners';
 
 export const setSortOrder = async (sort: string) => {

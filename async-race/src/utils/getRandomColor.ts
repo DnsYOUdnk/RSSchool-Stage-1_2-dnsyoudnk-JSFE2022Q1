@@ -1,4 +1,4 @@
-import { LENGTH_COLOR, LETTERS } from '../Constants';
+import { LENGTH_COLOR, LETTERS } from '../constants';
 
 export const getRandomColor = () => {
   let color = '#';

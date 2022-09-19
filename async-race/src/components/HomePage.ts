@@ -1,5 +1,5 @@
-import { renderGarage } from './renderGarage';
-import { renderWinners } from './renderWinners';
+import { Garage } from './Garage';
+import { renderWinners } from './Winners';
 
 export const render = (): void => {
   const homepage = `
@@ -26,7 +26,7 @@ export const render = (): void => {
         <button class="button random-button" id="randomize">Generate cars</button>
       </div>
       <div class="garage__components" id="garage">
-        ${renderGarage()}
+        ${Garage()}
       </div>
       <div class="message">
         <p id="message_alert"></p>

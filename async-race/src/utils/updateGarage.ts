@@ -1,5 +1,5 @@
-import { QUANTITY_ELEM_GARAGE } from '../../Constants';
-import { getCars } from '../apiFunctions/getCars';
+import { QUANTITY_ELEM_GARAGE } from '../constants';
+import { getCars } from './funcRequestAPI/getCars';
 import storeData from '../storeData/storeData';
 import { changeBtnPagination } from './changeBtnPagination';
 

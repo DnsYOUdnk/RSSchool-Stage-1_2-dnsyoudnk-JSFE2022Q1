@@ -1,4 +1,4 @@
-import { QUANTITY_ELEM_GARAGE } from '../../Constants';
+import { QUANTITY_ELEM_GARAGE } from '../constants';
 import storeData from '../storeData/storeData';
 
 export const changeBtnPagination = (option: number): void => {

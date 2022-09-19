@@ -1,6 +1,6 @@
-import { getCars } from '../apiFunctions/getCars';
-import { getWinners } from '../apiFunctions/getWinners';
-import { IStoreData } from '../../types';
+import { getCars } from '../utils/funcRequestAPI/getCars';
+import { getWinners } from '../utils/funcRequestAPI/getWinners';
+import { IStoreData } from '../types';
 
 const { items: cars, count: carsCount } = await getCars(1);
 const { items: winners, count: winnersCount } = await getWinners({

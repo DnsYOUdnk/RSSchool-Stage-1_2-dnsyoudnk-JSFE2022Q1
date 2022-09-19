@@ -1,7 +1,7 @@
-import { ICar } from '../../types';
-import { getCarImage } from '../../utils/getCarImage';
+import { ICar } from '../types';
+import { getCarImage } from '../utils/getCarImage';
 
-export const renderCar = ({ id, name, color }: ICar) => `
+export const Car = ({ id, name, color }: ICar) => `
 <div class="car__buttons">
   <button class="button button-select" id="select_car-${id}">Select</button>
   <button class="button button-remove" id="remove_car-${id}">Remove</button>

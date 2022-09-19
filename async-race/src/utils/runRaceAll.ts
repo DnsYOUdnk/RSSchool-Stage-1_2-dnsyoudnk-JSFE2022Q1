@@ -1,5 +1,5 @@
 import { IWin, StartDrive } from '../types/index';
-import storeData from '../components/storeData/storeData';
+import storeData from '../storeData/storeData';
 
 export const raceAll = async (promises: Promise<StartDrive>[], ids: number[]):
 Promise<IWin> => {

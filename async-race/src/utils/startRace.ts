@@ -1,4 +1,4 @@
-import storeData from '../components/storeData/storeData';
+import storeData from '../storeData/storeData';
 import { IWin, StartDrive } from '../types';
 import { raceAll } from './runRaceAll';
 

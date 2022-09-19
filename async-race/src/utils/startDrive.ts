@@ -1,7 +1,7 @@
-import { StartDrive } from '../../types';
-import { getAnimation } from '../../utils/getAnimation';
-import { getDistance } from '../../utils/getDistance';
-import { driveCar, startEngine } from '../apiFunctions/changeEngineCar';
+import { StartDrive } from '../types';
+import { getAnimation } from './getAnimation';
+import { getDistance } from './getDistance';
+import { driveCar, startEngine } from './funcRequestAPI/changeEngineCar';
 import storeData from '../storeData/storeData';
 
 export const startDrive = async (id: number): Promise<StartDrive> => {
