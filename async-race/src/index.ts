@@ -1,8 +1,6 @@
 import './style/style.css';
-import { listen } from './components/UI/uiBasic';
-import { render } from './components/HomePage';
+import { HomePage } from './components/HomePage';
 import { updateGarage } from './utils/updateGarage';
 
-render();
+HomePage();
 await updateGarage();
-listen();

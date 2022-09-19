@@ -1,28 +1,28 @@
-import storeData from '../../storeData/storeData';
-import { getCar } from '../../utils/funcRequestAPI/getCar';
-import { deleteCar } from '../../utils/funcRequestAPI/deleteCara';
-import { createCar } from '../../utils/funcRequestAPI/createCar';
-import { updateCar } from '../../utils/funcRequestAPI/updateCar';
-import { deleteWinner, savingWinner } from '../../utils/funcRequestAPI/changeWinner';
+import storeData from '../storeData/storeData';
+import { getCar } from './funcRequestAPI/getCar';
+import { deleteCar } from './funcRequestAPI/deleteCara';
+import { createCar } from './funcRequestAPI/createCar';
+import { updateCar } from './funcRequestAPI/updateCar';
+import { deleteWinner, savingWinner } from './funcRequestAPI/changeWinner';
 import {
   ICar,
   IWin,
   Colors,
   NamePage,
-} from '../../types';
-import { generateRandomCars } from '../../utils/generateRandomCars';
-import { startRace } from '../../utils/startRace';
-import { Garage } from '../Garage';
-import { renderWinners } from '../Winners';
-import { updateGarage } from '../../utils/updateGarage';
-import { updateWinners } from '../../utils/updateWinners';
-import { startDrive } from '../../utils/startDrive';
-import { stopDriving } from '../../utils/stopDriving';
-import { setSortOrder } from '../../utils/setSortOrder';
+} from '../types';
+import { generateRandomCars } from './generateRandomCars';
+import { startRace } from './startRace';
+import { Garage } from '../components/Garage';
+import { renderWinners } from '../components/Winners';
+import { updateGarage } from './updateGarage';
+import { updateWinners } from './updateWinners';
+import { startDrive } from './startDrive';
+import { stopDriving } from './stopDriving';
+import { setSortOrder } from './setSortOrder';
 
 let selectedCar: ICar | null = null;
 
-export const listen = (): void => {
+export const clickHandler = (): void => {
   document.body.addEventListener('click', async (event) => {
     const eventElement = event.target as HTMLElement;
     const garageView = document.getElementById('garage') as HTMLElement;

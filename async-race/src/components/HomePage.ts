@@ -1,7 +1,8 @@
+import { clickHandler } from '../utils/clickHandler';
 import { Garage } from './Garage';
 import { renderWinners } from './Winners';
 
-export const render = (): void => {
+export const HomePage = (): void => {
   const homepage = `
     <div class="navigation">
       <button class="button garage-navigation-button" id="garage-navigation">To garage</button>
@@ -44,4 +45,5 @@ export const render = (): void => {
   root.classList.add('homepage');
   root.innerHTML = homepage;
   document.body.appendChild(root);
+  clickHandler();
 };

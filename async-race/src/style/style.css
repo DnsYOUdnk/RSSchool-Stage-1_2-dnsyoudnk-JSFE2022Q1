@@ -175,6 +175,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  width: 100%;
+  position: relative;
+}
+
+.track::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  bottom: 16px;
   border-bottom: 1px dotted rgb(0, 0, 0);
 }
 
@@ -289,6 +298,10 @@ thead {
 }
 
 @media screen and (max-width: 600px) {
+  .track::after {
+    bottom: 12px;
+  }
+
   .car__item {
     max-width: 80px;
   }
